@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "home": "Ana səhifə",
+    "courses": "Kurslar",
+    "summerCamps": "Yay Düşərgələri",
+    "results": "Nəticələr",
+    "about": "Haqqımızda",
+    "contact": "Əlaqə"
+  },
+  "home": {
+    "hero": {
+      "title": "Xoş gəlmisiniz",
+      "subtitle": "Sabina Academy",
+      "description": "Bakıda aparıcı təhsil mərkəzi. Dünya səviyyəli kurslarımız və proqramlarımızla gələcəyinizi dəyişdirin.",
+      "cta": "Kursları Kəşf Et",
+      "ctaSecondary": "Nəticələrə Bax"
+    },
+    "stats": {
+      "students": "Tələbə",
+      "successRate": "Uğur Nisbəti",
+      "courses": "Kurs",
+      "years": "İl"
+    }
+  },
+  "camps": {
+    "badge": "Unudulmaz Macəralar",
+    "title": "Yay Düşərgələri",
+    "subtitle": "Beynəlxalq yay düşərgələrimizlə ömürlük macəra yaşayın",
+    "availableCamps": "Mövcud Düşərgələr",
+    "worldwideLocations": "Dünya Miqyasında",
+    "noCamps": "Düşərgə Yoxdur",
+    "noCampsDescription": "Yaxın zamanda yay düşərgələri üçün yoxlayın",
+    "ctaTitle": "Macəraya Hazırsınız?",
+    "ctaDescription": "Həyatı dəyişdirən yay düşərgələrimizi yaşamış minlərlə tələbəyə qoşulun",
+    "ctaButton": "Bizimlə Əlaqə",
+    "learnMore": "Ətraflı",
+    "exploreNow": "Düşərgələri Kəşf Et",
+    "about": "Düşərgə Haqqında",
+    "highlights": "Əsas Xüsusiyyətlər",
+    "activities": "Gündəlik Fəaliyyətlər",
+    "whatsIncluded": "Nələr Daxildir",
+    "gallery": "Foto Qalereya",
+    "registerNow": "İndi Qeydiyyatdan Keç",
+    "totalPrice": "Ümumi Qiymət",
+    "onlySpots": "Yalnız {count} yer qalıb!",
+    "registerButton": "Düşərgəyə Qeydiyyat",
+    "registerInfo": "Yerinizi təmin etmək üçün bizimlə əlaqə saxlayın",
+    "quickFacts": "Qısa Məlumat",
+    "year": "İl",
+    "location": "Məkan",
+    "ageRange": "Yaş Aralığı",
+    "duration": "Müddət",
+    "days": "gün",
+    "share": "Paylaş",
+    "backToCamps": "Bütün Düşərgələrə Qayıt",
+    "featured": "Seçilmiş Düşərgə",
+    "available": "İndi Mövcuddur",
+    "ages": "Yaşlar",
+    "price": "Qiymət",
+    "spots": "Boş Yerlər",
+    "spotsAvailable": "yer mövcuddur"
+  },
+  "courses": {
+    "title": "Kurslarımız",
+    "subtitle": "Uğurunuz üçün nəzərdə tutulmuş geniş çeşiddə peşəkar kurslardan seçim edin",
+    "totalCourses": "Mövcud Kurslar",
+    "successRate": "Uğur Nisbəti",
+    "students": "Aktiv Tələbələr",
+    "years": "İl Təcrübə",
+    "support": "24/7 Dəstək",
+    "featured": "Seçilmiş Kurslar",
+    "featuredSubtitle": "Ən populyar və yüksək reytinqli kurslarımız",
+    "allCourses": "Bütün Kurslar",
+    "allCoursesSubtitle": "Tam kurs kataloqunu kəşf edin",
+    "whatYouLearn": "Nə Öyrənəcəksiniz",
+    "courseDetails": "Kurs Detalları",
+    "enrollNow": "İndi Qeydiyyatdan Keç",
+    "coursePrice": "Kurs Qiyməti",
+    "enrollButton": "Öyrənməyə Başla",
+    "enrollInfo": "Başlamaq üçün bizimlə əlaqə saxlayın",
+    "courseInfo": "Kurs Məlumatı",
+    "duration": "Müddət",
+    "schedule": "Cədvəl",
+    "price": "Qiymət",
+    "learnMore": "Ətraflı",
+    "backToCourses": "Bütün Kurslara Qayıt",
+    "noCourses": "Kurs mövcud deyil",
+    "noCoursesDescription": "Yeni kurslar üçün yoxlayın",
+    "ctaTitle": "Öyrənməyə Başlamağa Hazırsınız?",
+    "ctaDescription": "Minlərlə uğurlu tələbəyə qoşulun və gələcəyinizi dəyişdirin",
+    "ctaButton": "Bu Gün Başlayın"
+  },
+  "results": {
+    "title": "Tələbə Uğur Hekayələri",
+    "subtitle": "Tələbələrimizin məqsədlərinə necə çatdığını görün",
+    "topAchievers": "Ən Yüksək Nəticələr",
+    "featured": "Seçilmiş Nəticə",
+    "allResults": "Bütün Nəticələr",
+    "noResults": "Hələ nəticə yoxdur",
+    "noResultsDescription": "Tələbə nailiyyətləri üçün yoxlayın",
+    "ctaTitle": "Növbəti Uğur Hekayəmiz Olun",
+    "ctaDescription": "Uğurlu tələbələr cəmiyyətimizə qoşulun",
+    "ctaButton": "Bu Gün Qeydiyyatdan Keçin"
+  },
+  "contact": {
+    "title": "Bizimlə Əlaqə",
+    "subtitle": "Komandamızla əlaqə saxlayın",
+    "form": {
+      "title": "Bizə Mesaj Göndərin",
+      "name": "Ad Soyad",
+      "email": "Email Ünvanı",
+      "phone": "Telefon Nömrəsi",
+      "subject": "Mövzu",
+      "message": "Mesajınız",
+      "submit": "Mesaj Göndər",
+      "sending": "Göndərilir...",
+      "success": "Mesaj uğurla göndərildi!",
+      "error": "Mesaj göndərilmədi"
+    },
+    "info": {
+      "title": "Əlaqə Məlumatları",
+      "address": "Ünvan",
+      "phone": "Telefon",
+      "email": "Email",
+      "hours": "İş Saatları"
+    }
+  },
+  "about": {
+    "title": "Sabina Academy Haqqında",
+    "subtitle": "Bakıda aparıcı təhsil mərkəzi",
+    "story": {
+      "title": "Bizim Hekayəmiz",
+      "paragraph1": "Sabina Academy Azərbaycanda və xaricdə tələbələrə dünya səviyyəli təhsil təqdim etmək missiyası ilə təsis edilmişdir.",
+      "paragraph2": "İllər ərzində minlərlə tələbəyə akademik məqsədlərinə və arzularına çatmaqda kömək etmişik.",
+      "paragraph3": "Bu gün də böyüyən cəmiyyətimizə xidmət etmək üçün təkliflərimizi yeniləməyə və genişləndirməyə davam edirik."
+    },
+    "values": {
+      "title": "Dəyərlərimiz",
+      "excellence": {
+        "title": "Mükəmməllik",
+        "description": "Təhsildə ən yüksək standartlara çalışırıq"
+      },
+      "community": {
+        "title": "İcma",
+        "description": "Dəstəkləyici öyrənmə mühiti qurmaq"
+      },
+      "success": {
+        "title": "Tələbə Uğuru",
+        "description": "Sizin uğurunuz bizim prioritetimizdir"
+      },
+      "passion": {
+        "title": "Ehtiras",
+        "description": "Etdiyimiz işi sevirik"
+      }
+    },
+    "stats": {
+      "students": "Tədris Olunan Tələbələr",
+      "success": "Uğur Nisbəti",
+      "courses": "Təklif Olunan Proqramlar",
+      "years": "İl Mükəmməllik"
+    },
+    "cta": {
+      "title": "İcmamıza Qoşulun",
+      "description": "Sabina Academy ilə uğura gedən yolunuza başlayın",
+      "button": "Bizimlə Əlaqə Saxlayın"
+    }
+  }
+}

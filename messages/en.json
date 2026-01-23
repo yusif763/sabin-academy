@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "summerCamps": "Summer Camps",
+    "results": "Results",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to",
+      "subtitle": "Sabina Academy",
+      "description": "Premier education center in Baku, Azerbaijan. Transform your future with our world-class courses and programs.",
+      "cta": "Explore Courses",
+      "ctaSecondary": "View Results"
+    },
+    "stats": {
+      "students": "Students",
+      "successRate": "Success Rate",
+      "courses": "Courses",
+      "years": "Years"
+    }
+  },
+  "camps": {
+    "badge": "Unforgettable Adventures",
+    "title": "Summer Camps",
+    "subtitle": "Experience the adventure of a lifetime with our international summer camps",
+    "availableCamps": "Available Camps",
+    "worldwideLocations": "Worldwide Locations",
+    "noCamps": "No Camps Available",
+    "noCampsDescription": "Check back soon for upcoming summer camps",
+    "ctaTitle": "Ready for an Adventure?",
+    "ctaDescription": "Join thousands of students who have experienced our life-changing summer camps",
+    "ctaButton": "Get in Touch",
+    "learnMore": "Learn More",
+    "exploreNow": "Explore Summer Camps",
+    "about": "About This Camp",
+    "highlights": "Camp Highlights",
+    "activities": "Daily Activities",
+    "whatsIncluded": "What's Included",
+    "gallery": "Photo Gallery",
+    "registerNow": "Register Now",
+    "totalPrice": "Total Price",
+    "onlySpots": "Only {count} spots remaining!",
+    "registerButton": "Register for Camp",
+    "registerInfo": "Contact us to secure your spot",
+    "quickFacts": "Quick Facts",
+    "year": "Year",
+    "location": "Location",
+    "ageRange": "Age Range",
+    "duration": "Duration",
+    "days": "days",
+    "share": "Share This Camp",
+    "backToCamps": "Back to All Camps",
+    "featured": "Featured Camp",
+    "available": "Available Now",
+    "ages": "Ages",
+    "price": "Price",
+    "spots": "Available Spots",
+    "spotsAvailable": "spots available"
+  },
+  "courses": {
+    "title": "Our Courses",
+    "subtitle": "Choose from our wide range of professional courses designed to help you succeed",
+    "totalCourses": "Courses Available",
+    "successRate": "Success Rate",
+    "students": "Active Students",
+    "years": "Years Experience",
+    "support": "24/7 Support",
+    "featured": "Featured Courses",
+    "featuredSubtitle": "Our most popular and highly rated courses",
+    "allCourses": "All Courses",
+    "allCoursesSubtitle": "Explore our complete course catalog",
+    "whatYouLearn": "What You'll Learn",
+    "courseDetails": "Course Details",
+    "enrollNow": "Enroll Now",
+    "coursePrice": "Course Price",
+    "enrollButton": "Start Learning",
+    "enrollInfo": "Contact us to get started",
+    "courseInfo": "Course Information",
+    "duration": "Duration",
+    "schedule": "Schedule",
+    "price": "Price",
+    "learnMore": "Learn More",
+    "backToCourses": "Back to All Courses",
+    "noCourses": "No courses available",
+    "noCoursesDescription": "Check back soon for new courses",
+    "ctaTitle": "Ready to Start Learning?",
+    "ctaDescription": "Join thousands of successful students and transform your future",
+    "ctaButton": "Get Started Today"
+  },
+  "results": {
+    "title": "Student Success Stories",
+    "subtitle": "See how our students achieve their goals",
+    "topAchievers": "Top Achievers",
+    "featured": "Featured Result",
+    "allResults": "All Results",
+    "noResults": "No results yet",
+    "noResultsDescription": "Check back soon for student achievements",
+    "ctaTitle": "Be Our Next Success Story",
+    "ctaDescription": "Join our community of successful students",
+    "ctaButton": "Enroll Today"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team",
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Working Hours"
+    }
+  },
+  "about": {
+    "title": "About Sabina Academy",
+    "subtitle": "Leading education center in Baku, Azerbaijan",
+    "story": {
+      "title": "Our Story",
+      "paragraph1": "Sabina Academy was founded with a mission to provide world-class education to students in Azerbaijan and beyond.",
+      "paragraph2": "Over the years, we have helped thousands of students achieve their academic goals and dreams.",
+      "paragraph3": "Today, we continue to innovate and expand our offerings to serve our growing community."
+    },
+    "values": {
+      "title": "Our Values",
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for the highest standards in education"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Building a supportive learning environment"
+      },
+      "success": {
+        "title": "Student Success",
+        "description": "Your success is our priority"
+      },
+      "passion": {
+        "title": "Passion",
+        "description": "We love what we do"
+      }
+    },
+    "stats": {
+      "students": "Students Taught",
+      "success": "Success Rate",
+      "courses": "Programs Offered",
+      "years": "Years of Excellence"
+    },
+    "cta": {
+      "title": "Join Our Community",
+      "description": "Start your journey to success with Sabina Academy",
+      "button": "Contact Us"
+    }
+  }
+}
