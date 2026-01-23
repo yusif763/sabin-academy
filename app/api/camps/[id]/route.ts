@@ -62,9 +62,6 @@ export async function PUT(
     const { id } = params
 
     // Delete existing translations
-    await prisma.summerCampTranslation.deleteMany({ 
-      where: { campId: id } 
-    })
 
     // Update camp with new translations
     const camp = await prisma.summerCamp.update({

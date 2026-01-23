@@ -344,7 +344,7 @@ export default function CampEditForm({ camp }: { camp: any }) {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">What's Included</label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">What&#39;s Included</label>
                                 <div className="space-y-2">
                                     {formData.translations[locale].includes.map((item, index) => (
                                         <div key={index} className="flex items-center space-x-2">

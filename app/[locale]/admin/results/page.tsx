@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 import AdminHeader from '@/components/admin/Header'
 import { Link } from '@/routing'
 import { Plus, Edit, Trash2, Eye, Star } from 'lucide-react'
+import Image from "next/image";
 
 async function getResults() {
     const results = await prisma.result.findMany({
@@ -51,7 +52,7 @@ export default async function ResultsAdminPage() {
                                 {/* Image */}
                                 {result.image && (
                                     <div className="relative h-48 overflow-hidden">
-                                        <img
+                                        <Image
                                             src={result.image}
                                             alt={result.studentName}
                                             className="w-full h-full object-cover"
@@ -101,7 +102,7 @@ export default async function ResultsAdminPage() {
 
                                     {trans?.testimonial && (
                                         <p className="text-sm text-secondary-600 italic line-clamp-2 mb-4 border-l-2 border-primary-500 pl-3">
-                                            "{trans.testimonial}"
+                                            &quot;{trans.testimonial}&quot;
                                         </p>
                                     )}
 

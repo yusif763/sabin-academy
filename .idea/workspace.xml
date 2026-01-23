@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6848597-5d1c-44d4-9952-c5424033e10c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/netlify.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/camps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/camps.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/camps/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/camps/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/camps/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/camps/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/results/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/results/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/camps/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/camps/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/camps/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/camps/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/results/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/results/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/camps/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/camps/[id]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/results/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/results/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/CampEditForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/CampEditForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +94,7 @@
       <workItem from="1769156746898" duration="1083000" />
       <workItem from="1769159857784" duration="797000" />
       <workItem from="1769160668645" duration="284000" />
-      <workItem from="1769160963951" duration="5253000" />
+      <workItem from="1769160963951" duration="6323000" />
     </task>
     <servers />
   </component>

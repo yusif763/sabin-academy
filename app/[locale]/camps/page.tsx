@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { getCamps } from '@/actions/camps'
 import { Link } from '@/routing'
 import { MapPin, Calendar, Users, Sparkles, Star, ArrowRight } from 'lucide-react'
+import Image from "next/image";
 
 export default async function CampsPage({ params }: { params: { locale: string } }) {
   const t = await getTranslations('camps')
@@ -66,7 +67,7 @@ export default async function CampsPage({ params }: { params: { locale: string }
                     <div className="grid md:grid-cols-2 gap-0">
                       {camp.image && (
                         <div className="relative h-64 md:h-auto overflow-hidden">
-                          <img 
+                          <Image
                             src={camp.image} 
                             alt={trans?.title} 
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
@@ -141,7 +142,7 @@ export default async function CampsPage({ params }: { params: { locale: string }
                         <div className="card hover:shadow-2xl transition-all h-full">
                           {camp.image && (
                             <div className="relative h-48 overflow-hidden">
-                              <img 
+                              <Image
                                 src={camp.image} 
                                 alt={trans?.title} 
                                 className="w-full h-full object-cover" 

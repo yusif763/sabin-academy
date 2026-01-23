@@ -96,16 +96,3 @@ export async function POST(request: Request) {
     )
   }
 }
-
-export async function getResultById(id: string) {
-    try {
-        const result = await prisma.result.findUnique({
-            where: { id },
-            include: { translations: true }
-        })
-        return result ? JSON.parse(JSON.stringify(result)) : null
-    } catch (error) {
-        console.error('Error fetching result:', error)
-        return null
-    }
-}

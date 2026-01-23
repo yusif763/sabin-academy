@@ -99,7 +99,7 @@ export default async function ResultsPage({ params }: { params: { locale: string
                     {/* Testimonial */}
                     {trans?.testimonial && (
                       <blockquote className="text-secondary-700 italic text-sm line-clamp-4 border-l-4 border-green-500 pl-4 mt-4">
-                        "{trans.testimonial}"
+                        &quot;{trans.testimonial}&quot;
                       </blockquote>
                     )}
                     

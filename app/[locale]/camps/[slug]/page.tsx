@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { getCampBySlug } from '@/actions/camps'
 import { Link } from '@/routing'
 import { MapPin, Calendar, Users, CheckCircle, ArrowLeft, Clock, DollarSign, Star } from 'lucide-react'
+import Image from "next/image";
 
 export default async function CampDetailPage({ 
   params 
@@ -80,7 +81,7 @@ export default async function CampDetailPage({
                   <div className="grid md:grid-cols-2 gap-4">
                     {camp.gallery.map((img: string, index: number) => (
                       <div key={index} className="relative h-48 overflow-hidden rounded-lg">
-                        <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform" />
+                        <Image src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover hover:scale-110 transition-transform" />
                       </div>
                     ))}
                   </div>

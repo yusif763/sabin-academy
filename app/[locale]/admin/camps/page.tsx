@@ -2,6 +2,7 @@ import { prisma } from '@/lib/prisma'
 import AdminHeader from '@/components/admin/Header'
 import { Link } from '@/routing'
 import { Plus, Edit, Trash2, Eye, Star, Calendar } from 'lucide-react'
+import Image from "next/image";
 
 async function getCamps() {
     const camps = await prisma.summerCamp.findMany({
@@ -51,7 +52,7 @@ export default async function CampsAdminPage() {
                                 {/* Image */}
                                 {camp.image && (
                                     <div className="relative h-48 overflow-hidden">
-                                        <img
+                                        <Image
                                             src={camp.image}
                                             alt={trans?.title}
                                             className="w-full h-full object-cover"
