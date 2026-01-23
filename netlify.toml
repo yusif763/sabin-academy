@@ -1,0 +1,22 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Node versiya sabitləmək istəsən:
+[build.environment]
+  NODE_VERSION = "20"
+
+# Production deploy-larda NEXTAUTH_URL sabit olur
+[context.production.environment]
+  NEXTAUTH_URL = "https://SENIN-DOMENIN.netlify.app"
+  NEXT_PUBLIC_APP_URL = "https://SENIN-DOMENIN.netlify.app"
+
+# Deploy Preview-larda URL dinamikdir
+[context.deploy-preview.environment]
+  NEXTAUTH_URL = "${DEPLOY_PRIME_URL}"
+  NEXT_PUBLIC_APP_URL = "${DEPLOY_PRIME_URL}"
+
+# Branch deploy-lar (optional)
+[context.branch-deploy.environment]
+  NEXTAUTH_URL = "${DEPLOY_PRIME_URL}"
+  NEXT_PUBLIC_APP_URL = "${DEPLOY_PRIME_URL}"
