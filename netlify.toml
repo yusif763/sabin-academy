@@ -2,100 +2,73 @@
   command = "npm run build"
   publish = ".next"
 
-# Node versiya sabitləmək istəsən:
 [build.environment]
   NODE_VERSION = "20"
 
-# Production deploy-larda NEXTAUTH_URL sabit olur
 [context.production.environment]
-  NEXTAUTH_URL = "https://SENIN-DOMENIN.netlify.app"
-  NEXT_PUBLIC_APP_URL = "https://SENIN-DOMENIN.netlify.app"
+  NEXTAUTH_URL = "https://sabinaacademy.com"
+  NEXT_PUBLIC_APP_URL = "https://sabinaacademy.com"
 
-# Deploy Preview-larda URL dinamikdir
 [context.deploy-preview.environment]
   NEXTAUTH_URL = "${DEPLOY_PRIME_URL}"
   NEXT_PUBLIC_APP_URL = "${DEPLOY_PRIME_URL}"
 
-# Branch deploy-lar (optional)
 [context.branch-deploy.environment]
   NEXTAUTH_URL = "${DEPLOY_PRIME_URL}"
   NEXT_PUBLIC_APP_URL = "${DEPLOY_PRIME_URL}"
 
-
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Redirects and Rewrites
+# API və admin route-lar - redirect OLMASIN
 [[redirects]]
-  from = "/"
-  to = "/en"
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
   status = 200
-  force = false
-  conditions = {Language = ["en"]}
 
-[[redirects]]
-  from = "/*"
-  to = "/en/:splat"
-  status = 200
-  force = false
-  conditions = {Language = ["en"]}
-
-# Admin routes - NO redirect
 [[redirects]]
   from = "/admin/*"
   to = "/admin/:splat"
   status = 200
-  force = true
 
-[[redirects]]
-  from = "/api/*"
-  to = "/api/:splat"
-  status = 200
-  force = true
-
-# Static files
+# Static fayllar
 [[redirects]]
   from = "/_next/*"
   to = "/_next/:splat"
   status = 200
-  force = true
 
-[[redirects]]
-  from = "/uploads/*"
-  to = "/uploads/:splat"
-  status = 200
-  force = true
-
-# Language-specific routes
-[[redirects]]
-  from = "/az"
-  to = "/az"
-  status = 200
-  force = true
-
+# Dil-spesifik route-lar - bunlar qalır
 [[redirects]]
   from = "/az/*"
   to = "/az/:splat"
   status = 200
-  force = true
-
-[[redirects]]
-  from = "/ru"
-  to = "/ru"
-  status = 200
-  force = true
 
 [[redirects]]
   from = "/ru/*"
   to = "/ru/:splat"
   status = 200
-  force = true
 
-# Headers for security
+[[redirects]]
+  from = "/en/*"
+  to = "/en/:splat"
+  status = 200
+
+# ROOT - /en-ə redirect
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 302
+
+# Qalanlar - /en-ə redirect (ən son qaydadır!)
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 302
+
+# Security headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer-when-downgrade"
-
