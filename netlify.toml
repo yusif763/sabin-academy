@@ -20,3 +20,86 @@
 [context.branch-deploy.environment]
   NEXTAUTH_URL = "${DEPLOY_PRIME_URL}"
   NEXT_PUBLIC_APP_URL = "${DEPLOY_PRIME_URL}"
+
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirects and Rewrites
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 200
+  force = false
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 200
+  force = false
+  conditions = {Language = ["en"]}
+
+# Admin routes - NO redirect
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200
+  force = true
+
+# Static files
+[[redirects]]
+  from = "/_next/*"
+  to = "/_next/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/uploads/*"
+  to = "/uploads/:splat"
+  status = 200
+  force = true
+
+# Language-specific routes
+[[redirects]]
+  from = "/az"
+  to = "/az"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/az/*"
+  to = "/az/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ru"
+  to = "/ru"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ru/*"
+  to = "/ru/:splat"
+  status = 200
+  force = true
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+# Environment variables (optional)
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"

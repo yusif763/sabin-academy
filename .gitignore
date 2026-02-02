@@ -38,3 +38,5 @@ prisma/migrations
 
 # Uploads
 /public/uploads
+
+.env
