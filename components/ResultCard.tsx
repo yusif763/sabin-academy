@@ -2,6 +2,7 @@
 
 import { Award } from 'lucide-react'
 import { useState } from 'react'
+import Image from "next/image";
 
 interface ResultCardProps {
     studentName: string
@@ -60,7 +61,7 @@ export default function ResultCard({
                             onClick={(e) => e.stopPropagation()}
                         />
                     ) : (
-                        <img
+                        <Image
                             src={certificate}
                             alt="Certificate"
                             style={{
@@ -184,7 +185,7 @@ export default function ResultCard({
                                 borderRadius: '50%', overflow: 'hidden',
                                 background: '#d0c8c0',
                             }}>
-                                <img
+                                <Image
                                     src={image}
                                     alt={studentName}
                                     style={{
@@ -326,7 +327,7 @@ export default function ResultCard({
                                         <span style={{ fontSize: '0.65rem', color: '#555', marginTop: '6px', fontWeight: '600' }}>PDF</span>
                                     </div>
                                 ) : (
-                                    <img
+                                    <Image
                                         src={certificate}
                                         alt="Certificate"
                                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}

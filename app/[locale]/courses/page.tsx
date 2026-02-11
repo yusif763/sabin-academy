@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server'
 import { getCourses } from '@/actions/courses'
 import { Link } from '@/routing'
 import { BookOpen, Clock, Users, CheckCircle, Award, TrendingUp, Star } from 'lucide-react'
+import Image from "next/image";
 
 export default async function CoursesPage({ params }: { params: { locale: string } }) {
   const t = await getTranslations('courses')
@@ -62,7 +63,7 @@ export default async function CoursesPage({ params }: { params: { locale: string
                     <div className="card hover:shadow-2xl transition-all group h-full">
                       {course.image && (
                         <div className="relative h-48 overflow-hidden">
-                          <img 
+                          <Image
                             src={course.image} 
                             alt={trans?.title} 
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
@@ -137,7 +138,7 @@ export default async function CoursesPage({ params }: { params: { locale: string
                   <div className="card hover:shadow-2xl transition-all h-full">
                     {course.image && (
                       <div className="relative h-48 overflow-hidden">
-                        <img 
+                        <Image
                           src={course.image} 
                           alt={trans?.title} 
                           className="w-full h-full object-cover" 

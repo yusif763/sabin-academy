@@ -92,7 +92,7 @@ export default async function ResultsPage({ params }: { params: { locale: string
                             {t('allResults')}
                         </h2>
                         <p className="text-xl text-secondary-600">
-                            Celebrating every student's success
+                            Celebrating every student&apos;s success
                         </p>
                     </div>
 

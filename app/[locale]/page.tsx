@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { ArrowRight, Award, BookOpen, Globe, Users } from 'lucide-react'
 import { Link } from '@/routing'
+import Image from "next/image";
 
 export default async function HomePage() {
   const t = await getTranslations()
@@ -52,7 +53,7 @@ export default async function HomePage() {
             <div className="relative animate-fade-in animation-delay-200">
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 opacity-10"></div>
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
                   alt="Sabina Academy"
                   className="w-full h-full object-cover"

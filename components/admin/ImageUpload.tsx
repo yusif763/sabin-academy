@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Upload, X, Image as ImageIcon } from 'lucide-react'
+import Image from "next/image";
 
 interface ImageUploadProps {
     value?: string
@@ -71,7 +72,7 @@ export default function ImageUpload({ value, onChange, label = 'Image' }: ImageU
             {preview ? (
                 <div className="relative">
                     <div className="relative w-full h-48 rounded-lg overflow-hidden border-2 border-secondary-200">
-                        <img
+                        <Image
                             src={preview}
                             alt="Preview"
                             className="w-full h-full object-cover"
