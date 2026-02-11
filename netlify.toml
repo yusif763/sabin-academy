@@ -20,12 +20,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# API və admin route-lar - redirect OLMASIN
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
 [[redirects]]
   from = "/admin/*"
   to = "/admin/:splat"
