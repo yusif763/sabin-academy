@@ -1,5 +1,5 @@
 [build]
-  command = "prisma migrate deploy && npm run db:seed && npm run build"
+  command = "prisma migrate deploy && npm run build"
   publish = ".next"
 
 [build.environment]
@@ -20,18 +20,20 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# /api/* - heç vaxt redirect OLMASIN, Next.js handle edir
 [[redirects]]
-  from = "/admin/*"
-  to = "/admin/:splat"
+  from = "/api/*"
+  to = "/api/:splat"
   status = 200
+  force = true
 
-# Static fayllar
+# /_next/* - static assets
 [[redirects]]
   from = "/_next/*"
   to = "/_next/:splat"
   status = 200
 
-# Dil-spesifik route-lar - bunlar qalır
+# Dil-spesifik route-lar
 [[redirects]]
   from = "/az/*"
   to = "/az/:splat"
