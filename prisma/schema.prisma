@@ -95,6 +95,7 @@ model Result {
   score       String   // e.g., "7.0" for IELTS
   testType    String   // IELTS, DIM, etc.
   image       String?  // Student photo or certificate
+  certificate String?
   featured    Boolean  @default(false)
   date        DateTime
   active      Boolean  @default(true)

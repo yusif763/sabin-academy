@@ -55,6 +55,7 @@ export default async function CampsAdminPage() {
                                         <Image
                                             src={camp.image}
                                             alt={trans?.title}
+                                            fill
                                             className="w-full h-full object-cover"
                                         />
                                         {camp.featured && (

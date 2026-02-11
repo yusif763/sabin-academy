@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6848597-5d1c-44d4-9952-c5424033e10c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/ResultCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ss.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/results.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/results.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/camps/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/camps/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/results/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/results/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/results/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/results/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/ResultEditForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/ResultEditForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +36,14 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
     &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/yusif/Desktop/sabina-academy-complete/app/admin&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/yusif/Desktop/sabina-academy-complete&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -85,6 +94,9 @@
       <workItem from="1769159857784" duration="797000" />
       <workItem from="1769160668645" duration="284000" />
       <workItem from="1769160963951" duration="6323000" />
+      <workItem from="1770033846078" duration="4871000" />
+      <workItem from="1770789457174" duration="585000" />
+      <workItem from="1770793321734" duration="2206000" />
     </task>
     <servers />
   </component>

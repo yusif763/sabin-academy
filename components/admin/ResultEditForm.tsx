@@ -33,6 +33,7 @@ export default function ResultEditForm({ result }: { result: any }) {
             score: result.score || '',
             testType: result.testType || '',
             image: result.image || '',
+            certificate: result.certificate || '',
             featured: result.featured || false,
             active: result.active !== undefined ? result.active : true,
             date: result.date ? new Date(result.date).toISOString().split('T')[0] : '',
@@ -174,6 +175,13 @@ export default function ResultEditForm({ result }: { result: any }) {
                                 value={formData.image}
                                 onChange={(url) => setFormData({ ...formData, image: url })}
                                 label="Student Photo"
+                            />
+                        </div>
+                        <div className="md:col-span-2">
+                            <ImageUpload
+                                value={formData.certificate}
+                                onChange={(url) => setFormData({ ...formData, certificate: url })}
+                                label="Certificate / Test Report"
                             />
                         </div>
                     </div>

@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma'
 import AdminHeader from '@/components/admin/Header'
 import { Link } from '@/routing'
 import { Plus, Edit, Trash2, Eye, Star } from 'lucide-react'
-import Image from "next/image";
+import Image from "next/image"
 
 async function getResults() {
     const results = await prisma.result.findMany({
@@ -51,14 +51,17 @@ export default async function ResultsAdminPage() {
                             <div key={result.id} className="bg-white rounded-xl border border-secondary-200 overflow-hidden hover:shadow-lg transition-shadow">
                                 {/* Image */}
                                 {result.image && (
-                                    <div className="relative h-48 overflow-hidden">
+                                    <div className="relative h-48 overflow-hidden bg-secondary-100">
                                         <Image
                                             src={result.image}
                                             alt={result.studentName}
-                                            className="w-full h-full object-cover"
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                                            unoptimized
                                         />
                                         {result.featured && (
-                                            <div className="absolute top-4 right-4 bg-yellow-400 text-secondary-900 px-3 py-1 rounded-full text-xs font-bold flex items-center">
+                                            <div className="absolute top-4 right-4 bg-yellow-400 text-secondary-900 px-3 py-1 rounded-full text-xs font-bold flex items-center z-10">
                                                 <Star className="w-3 h-3 mr-1 fill-current" />
                                                 Featured
                                             </div>
@@ -69,13 +72,13 @@ export default async function ResultsAdminPage() {
                                 {/* Content */}
                                 <div className="p-6">
                                     <div className="flex items-center justify-between mb-3">
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${
-                        result.active
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
-                    }`}>
-                      {result.active ? 'Active' : 'Inactive'}
-                    </span>
+                                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${
+                                            result.active
+                                                ? 'bg-green-100 text-green-800'
+                                                : 'bg-red-100 text-red-800'
+                                        }`}>
+                                            {result.active ? 'Active' : 'Inactive'}
+                                        </span>
                                     </div>
 
                                     <h3 className="font-bold text-lg text-secondary-900 mb-2">
