@@ -249,7 +249,7 @@ netstat -ano | findstr :3000   # Windows
 ## 📞 Dəstək
 
 Problem yaşayırsınız?
-- Email: info@sabina-academy.az
+- Email: info@sabinaacademy.com
 - Documentation: README.md faylına baxın
 
 ## 🎓 Növbəti Addımlar

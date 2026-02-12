@@ -56,6 +56,7 @@ export default async function HomePage() {
                 <Image
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
                   alt="Sabina Academy"
+                  fill
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -73,6 +73,7 @@ export default function ImageUpload({ value, onChange, label = 'Image' }: ImageU
                 <div className="relative">
                     <div className="relative w-full h-48 rounded-lg overflow-hidden border-2 border-secondary-200">
                         <Image
+                            fill
                             src={preview}
                             alt="Preview"
                             className="w-full h-full object-cover"

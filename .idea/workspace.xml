@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6848597-5d1c-44d4-9952-c5424033e10c" name="Changes" comment="" />
+    <list default="true" id="d6848597-5d1c-44d4-9952-c5424033e10c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_DOCUMENTATION.md" beforeDir="false" afterPath="$PROJECT_DIR$/API_DOCUMENTATION.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QUICKSTART.md" beforeDir="false" afterPath="$PROJECT_DIR$/QUICKSTART.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SETUP.md" beforeDir="false" afterPath="$PROJECT_DIR$/SETUP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/about/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/about/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/camps/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/camps/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/contact/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/courses/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/courses/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ResultCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ResultCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/ImageUpload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/ImageUpload.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Footer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/az.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/az.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/messages/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/messages/ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/seed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routing.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,6 +113,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.toml" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

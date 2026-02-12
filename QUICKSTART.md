@@ -175,7 +175,7 @@ xl: 1280px  /* Desktop */
 
 ## 📞 Dəstək
 
-**Email**: info@sabina-academy.az
+**Email**: info@sabinaacademy.com
 **Docs**: README.md, SETUP.md
 
 ## 🎓 Növbəti Addımlar

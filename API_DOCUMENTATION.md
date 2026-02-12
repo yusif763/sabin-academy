@@ -231,7 +231,7 @@ Submit contact form.
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "phone": "+994501234567",
+  "phone": "+994555519933",
   "subject": "Course Inquiry",
   "message": "I want to learn more about IELTS courses."
 }

@@ -79,19 +79,19 @@ export default function Footer({ locale }: FooterProps) {
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" />
                 <a
-                  href="tel:+994501234567"
+                  href="tel:+994555519933"
                   className="text-secondary-300 hover:text-primary-400 transition-colors text-sm"
                 >
-                  +994 (50) 123-45-67
+                  +994 (55) 5519933
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
                 <a
-                  href="mailto:info@sabina-academy.az"
+                  href="mailto:info@sabinaacademy.com"
                   className="text-secondary-300 hover:text-primary-400 transition-colors text-sm"
                 >
-                  info@sabina-academy.az
+                  info@sabinaacademy.com
                 </a>
               </li>
             </ul>

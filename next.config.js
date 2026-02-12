@@ -1,21 +1,23 @@
-const withNextIntl = require('next-intl/plugin')()
+import createNextIntlPlugin from 'next-intl/plugin'
+
+// i18n.ts faylının path-ini göstər
+const withNextIntl = createNextIntlPlugin('./i18n.ts')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['localhost'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-  },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '10mb',
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+            },
+        ],
     },
-  },
+    experimental: {
+        serverActions: {
+            bodySizeLimit: '10mb',
+        },
+    },
 }
 
-module.exports = withNextIntl(nextConfig)
+export default withNextIntl(nextConfig)

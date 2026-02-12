@@ -193,7 +193,7 @@ All rights reserved - Sabina Academy 2026
 
 ## 🤝 Support
 
-For support, email info@sabina-academy.az
+For support, email info@sabinaacademy.com
 
 ---
 

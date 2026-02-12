@@ -69,7 +69,8 @@ export default async function CampsPage({ params }: { params: { locale: string }
                         <div className="relative h-64 md:h-auto overflow-hidden">
                           <Image
                             src={camp.image} 
-                            alt={trans?.title} 
+                            alt={trans?.title}
+                            fill
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                           />
                           <div className="absolute top-4 left-4 bg-yellow-400 text-secondary-900 px-4 py-2 rounded-full font-bold flex items-center">
@@ -143,7 +144,8 @@ export default async function CampsPage({ params }: { params: { locale: string }
                           {camp.image && (
                             <div className="relative h-48 overflow-hidden">
                               <Image
-                                src={camp.image} 
+                                src={camp.image}
+                                fill
                                 alt={trans?.title} 
                                 className="w-full h-full object-cover" 
                               />

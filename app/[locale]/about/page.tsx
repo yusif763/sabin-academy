@@ -127,7 +127,7 @@ export default async function AboutPage() {
             {/* Map */}
             <div className="card p-0 overflow-hidden h-[500px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.2166134534886!2d49.8449!3d40.3777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDIyJzM5LjciTiA0OcKwNTAnNDEuNiJF!5e0!3m2!1sen!2saz!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d587.6145145024867!2d49.83625794068304!3d40.41292208785901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2saz!4v1770899369533!5m2!1sen!2saz"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -163,8 +163,8 @@ export default async function AboutPage() {
                     <div>
                       <h4 className="font-semibold mb-1">Contact</h4>
                       <p className="text-secondary-600">
-                        Phone: +994 (50) 123-45-67<br />
-                        Email: info@sabina-academy.az
+                        Phone: +994 (55) 5519933<br />
+                        Email: info@sabinaacademy.com
                       </p>
                     </div>
                   </div>
@@ -176,8 +176,8 @@ export default async function AboutPage() {
                     <div>
                       <h4 className="font-semibold mb-1">Working Hours</h4>
                       <p className="text-secondary-600">
-                        Monday - Friday: 9:00 AM - 7:00 PM<br />
-                        Saturday: 10:00 AM - 5:00 PM<br />
+                        Monday - Friday: 9:00 - 21:00 <br />
+                        Saturday: 9:00 - 19:00 <br />
                         Sunday: Closed
                       </p>
                     </div>

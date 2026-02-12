@@ -64,6 +64,7 @@ export default function ResultCard({
                         <Image
                             src={certificate}
                             alt="Certificate"
+                            fill
                             style={{
                                 maxWidth: '90vw', maxHeight: '90vh',
                                 borderRadius: '12px',
@@ -188,6 +189,8 @@ export default function ResultCard({
                                 <Image
                                     src={image}
                                     alt={studentName}
+                                    width={100}
+                                    height={100}
                                     style={{
                                         width: '100%', height: '100%',
                                         objectFit: 'cover', objectPosition: 'center top',
@@ -330,6 +333,7 @@ export default function ResultCard({
                                     <Image
                                         src={certificate}
                                         alt="Certificate"
+                                        fill
                                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                                     />
                                 )}

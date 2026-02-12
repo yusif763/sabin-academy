@@ -1,43 +1,43 @@
-
+import createIntlMiddleware from 'next-intl/middleware'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { routing } from './routing'
 
+// next-intl middleware
+const intlMiddleware = createIntlMiddleware(routing)
+
 export function middleware(request: NextRequest) {
     const { pathname, search } = request.nextUrl
 
-    // 1) locale-i path-dən götür (/:locale/...)
+    // Locale-i path-dən götür
     const locale = pathname.split('/')[1]
     const isLocaleValid = routing.locales.includes(locale as any)
+    const currentLocale = isLocaleValid ? locale : routing.defaultLocale
 
-    // locale yoxdursa / defaultLocale ilə yönləndir (istəsən bunu çıxarda bilərsən)
-    if (!isLocaleValid) {
-        const url = request.nextUrl.clone()
-        url.pathname = `/en/${pathname}`
-        return NextResponse.redirect(url)
-    }
-
-    // 2) Admin route-dadır?
-    const isAdminRoute = pathname.startsWith(`/${locale}/admin`)
-
-    // 3) Login səhifəsidirsə, auth yoxlamasını KEÇ (yoxsa loop olacaq)
-    const isLoginPage = pathname === `/${locale}/admin/login`
+    // Admin route yoxlaması
+    const isAdminRoute = pathname.includes('/admin')
+    const isLoginPage = pathname.includes('/admin/login')
 
     if (isAdminRoute && !isLoginPage) {
         const token = request.cookies.get('admin-token')?.value
 
         if (!token) {
-            // istifadəçinin istədiyi route-u redirect param kimi saxla
             const loginUrl = request.nextUrl.clone()
-            loginUrl.pathname = `/${locale}/admin/login`
+            loginUrl.pathname = `/${currentLocale}/admin/login`
             loginUrl.searchParams.set('redirect', `${pathname}${search || ''}`)
             return NextResponse.redirect(loginUrl)
         }
     }
 
-    return NextResponse.next()
+    // next-intl middleware - bütün digər route-lar üçün
+    return intlMiddleware(request)
 }
 
 export const config = {
-    matcher: ['/:locale/admin/:path*'],
+    matcher: [
+        // next-intl üçün lazım olan matcher
+        '/',
+        '/(en|az|ru)/:path*',
+        '/((?!api|_next|_vercel|.*\\..*).*)'
+    ]
 }

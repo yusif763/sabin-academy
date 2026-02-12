@@ -65,7 +65,8 @@ export default async function CoursesPage({ params }: { params: { locale: string
                         <div className="relative h-48 overflow-hidden">
                           <Image
                             src={course.image} 
-                            alt={trans?.title} 
+                            alt={trans?.title}
+                            fill
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" 
                           />
                           <div className="absolute top-4 right-4 bg-yellow-400 text-secondary-900 px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
@@ -140,7 +141,8 @@ export default async function CoursesPage({ params }: { params: { locale: string
                       <div className="relative h-48 overflow-hidden">
                         <Image
                           src={course.image} 
-                          alt={trans?.title} 
+                          alt={trans?.title}
+                          fill
                           className="w-full h-full object-cover" 
                         />
                         {course.icon && (
