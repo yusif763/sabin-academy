@@ -11,12 +11,14 @@ import {
     Settings,
     LogOut,
     ChevronRight,
+    LucideActivity
 } from 'lucide-react'
 
 const menuItems = [
     { label: 'Dashboard', href: '/en/admin', icon: LayoutDashboard, exact: true },
     { label: 'Courses', href: '/en/admin/courses', icon: BookOpen },
     { label: 'Summer Camps', href: '/en/admin/camps', icon: Tent },
+    { label: 'Activities', href: '/en/admin/activities', icon: LucideActivity },
     { label: 'Results', href: '/en/admin/results', icon: Trophy },
     { label: 'Contacts', href: '/en/admin/contacts', icon: Mail },
     { label: 'Settings', href: '/en/admin/settings', icon: Settings },

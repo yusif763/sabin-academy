@@ -22,6 +22,7 @@ export default function Navigation({ locale }: NavigationProps) {
     { name: t('home'), href: '/' },
     { name: t('courses'), href: '/courses' },
     { name: t('summerCamps'), href: '/camps' },
+    { name: t('activities'), href: '/activities' },
     { name: t('results'), href: '/results' },
     { name: t('about'), href: '/about' },
     { name: t('contact'), href: '/contact' },

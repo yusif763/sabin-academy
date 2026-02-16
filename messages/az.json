@@ -3,6 +3,7 @@
     "home": "Ana səhifə",
     "courses": "Kurslar",
     "summerCamps": "Yay Düşərgələri",
+    "activities": "Fəaliyyətlər",
     "results": "Nəticələr",
     "about": "Haqqımızda",
     "contact": "Əlaqə"
@@ -164,5 +165,16 @@
       "description": "Sabina Academy ilə uğura gedən yolunuza başlayın",
       "button": "Bizimlə Əlaqə Saxlayın"
     }
+  },
+  "activities": {
+    "badge": "Fəaliyyətlərimiz",
+    "title": "Fəaliyyətlər",
+    "subtitle": "Bacarıqları inkişaf etdirmək və özünəinamı artırmaq üçün nəzərdə tutulmuş geniş fəaliyyət çeşidimizi kəşf edin",
+    "featured": "Seçilmiş Fəaliyyətlər",
+    "allActivities": "Bütün Fəaliyyətlər",
+    "learnMore": "Ətraflı",
+    "noActivities": "Hələ fəaliyyət yoxdur",
+    "gallery": "Qalereya",
+    "backToActivities": "Fəaliyyətlərə qayıt"
   }
 }

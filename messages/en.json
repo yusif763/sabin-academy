@@ -3,6 +3,7 @@
     "home": "Home",
     "courses": "Courses",
     "summerCamps": "Summer Camps",
+    "activities": "Activities",
     "results": "Results",
     "about": "About",
     "contact": "Contact"
@@ -164,5 +165,16 @@
       "description": "Start your journey to success with Sabina Academy",
       "button": "Contact Us"
     }
+  },
+  "activities": {
+    "badge": "Our Activities",
+    "title": "Activities",
+    "subtitle": "Discover our wide range of activities designed to develop skills and build confidence",
+    "featured": "Featured Activities",
+    "allActivities": "All Activities",
+    "learnMore": "Learn More",
+    "noActivities": "No activities yet",
+    "gallery": "Gallery",
+    "backToActivities": "Back to Activities"
   }
 }

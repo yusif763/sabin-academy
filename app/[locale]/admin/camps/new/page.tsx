@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AdminHeader from '@/components/admin/Header'
 import ImageUpload from '@/components/admin/ImageUpload'
-import { createCamp } from '@/actions/camps'
+import { createCamp, addGalleryImage } from '@/actions/camps'
 import { Save, ArrowLeft, Plus, X } from 'lucide-react'
 import { Link } from '@/routing'
 
@@ -12,6 +12,8 @@ export default function NewCampPage() {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const [galleryImages, setGalleryImages] = useState<string[]>([])
+    const [currentGalleryImage, setCurrentGalleryImage] = useState('')
 
     const [formData, setFormData] = useState({
         slug: '',
@@ -20,7 +22,6 @@ export default function NewCampPage() {
         startDate: '',
         endDate: '',
         image: '',
-        gallery: [] as string[],
         featured: false,
         active: true,
         spots: 30,
@@ -51,6 +52,17 @@ export default function NewCampPage() {
         }
     })
 
+    // Gallery handlers
+    const handleAddGalleryImage = () => {
+        if (!currentGalleryImage) return
+        setGalleryImages(prev => [...prev, currentGalleryImage])
+        setCurrentGalleryImage('')
+    }
+
+    const handleRemoveGalleryImage = (index: number) => {
+        setGalleryImages(prev => prev.filter((_, i) => i !== index))
+    }
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
@@ -63,7 +75,17 @@ export default function NewCampPage() {
                 { locale: 'ru', ...formData.translations.ru }
             ]
 
-            await createCamp({ ...formData, translations })
+            // 1) Camp yarat
+            const camp = await createCamp({ ...formData, translations })
+
+            // 2) Gallery şəkillərini arxa planda əlavə et
+            if (galleryImages.length > 0) {
+                await Promise.all(
+                    galleryImages.map((image) => addGalleryImage(camp.id, image))
+                )
+            }
+
+            // 3) Redirect
             router.push('/admin/camps')
         } catch (err: any) {
             setError(err.message || 'Failed to create camp')
@@ -138,9 +160,7 @@ export default function NewCampPage() {
 
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Slug (URL) *
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Slug (URL) *</label>
                                 <input
                                     type="text"
                                     required
@@ -152,9 +172,7 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Year *
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Year *</label>
                                 <input
                                     type="number"
                                     required
@@ -165,9 +183,7 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Location *
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Location *</label>
                                 <input
                                     type="text"
                                     required
@@ -179,9 +195,7 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Age Range
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Age Range</label>
                                 <input
                                     type="text"
                                     value={formData.ageRange}
@@ -192,9 +206,7 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Start Date *
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Start Date *</label>
                                 <input
                                     type="date"
                                     required
@@ -205,9 +217,7 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    End Date *
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">End Date *</label>
                                 <input
                                     type="date"
                                     required
@@ -218,12 +228,9 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Price *
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Price *</label>
                                 <input
                                     type="text"
-                                    required
                                     value={formData.price}
                                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                                     className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
@@ -232,9 +239,7 @@ export default function NewCampPage() {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">
-                                    Available Spots
-                                </label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Available Spots</label>
                                 <input
                                     type="number"
                                     value={formData.spots}
@@ -253,7 +258,6 @@ export default function NewCampPage() {
                                     />
                                     <span className="text-sm font-medium text-secondary-700">Featured</span>
                                 </label>
-
                                 <label className="flex items-center space-x-2">
                                     <input
                                         type="checkbox"
@@ -273,6 +277,73 @@ export default function NewCampPage() {
                                 />
                             </div>
                         </div>
+                    </div>
+
+                    {/* ─── GALLERY SECTION ─── */}
+                    <div className="bg-white rounded-xl border border-secondary-200 p-6 mb-6">
+                        <h3 className="text-lg font-bold text-secondary-900 mb-4">
+                            Gallery Images
+                            <span className="ml-2 text-sm font-normal text-secondary-500">
+                                ({galleryImages.length} images)
+                            </span>
+                        </h3>
+
+                        {/* Upload yeni şəkil */}
+                        <div className="mb-4">
+                            <ImageUpload
+                                value={currentGalleryImage}
+                                onChange={setCurrentGalleryImage}
+                                label="Upload Gallery Image"
+                            />
+                            {currentGalleryImage && (
+                                <button
+                                    type="button"
+                                    onClick={handleAddGalleryImage}
+                                    className="mt-3 inline-flex items-center space-x-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-medium"
+                                >
+                                    <Plus className="w-4 h-4" />
+                                    <span>Add to Gallery</span>
+                                </button>
+                            )}
+                        </div>
+
+                        {/* Gallery preview */}
+                        {galleryImages.length > 0 && (
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                                {galleryImages.map((img, index) => (
+                                    <div
+                                        key={index}
+                                        className="relative group aspect-square rounded-xl overflow-hidden bg-secondary-100"
+                                    >
+                                        <img
+                                            src={img}
+                                            alt={`Gallery ${index + 1}`}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        {/* Delete overlay */}
+                                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                            <button
+                                                type="button"
+                                                onClick={() => handleRemoveGalleryImage(index)}
+                                                className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                                            >
+                                                <X className="w-5 h-5" />
+                                            </button>
+                                        </div>
+                                        {/* Order badge */}
+                                        <div className="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
+                                            {index + 1}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {galleryImages.length === 0 && (
+                            <p className="text-sm text-secondary-500 mt-2">
+                                No gallery images yet. Upload images above.
+                            </p>
+                        )}
                     </div>
 
                     {/* Translations */}
@@ -317,104 +388,41 @@ export default function NewCampPage() {
                                     />
                                 </div>
 
-                                {/* Activities */}
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">Activities</label>
-                                    <div className="space-y-2">
-                                        {formData.translations[locale].activities.map((activity, index) => (
-                                            <div key={index} className="flex items-center space-x-2">
-                                                <input
-                                                    type="text"
-                                                    value={activity}
-                                                    onChange={(e) => updateItem(locale, 'activities', index, e.target.value)}
-                                                    className="flex-1 px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                                                    placeholder="Activity"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => removeItem(locale, 'activities', index)}
-                                                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
-                                                >
-                                                    <X className="w-5 h-5" />
-                                                </button>
-                                            </div>
-                                        ))}
-                                        <button
-                                            type="button"
-                                            onClick={() => addItem(locale, 'activities')}
-                                            className="text-primary-600 hover:text-primary-700 text-sm font-medium inline-flex items-center"
-                                        >
-                                            <Plus className="w-4 h-4 mr-1" />
-                                            Add Activity
-                                        </button>
+                                {(['activities', 'includes', 'highlights'] as const).map((field) => (
+                                    <div key={field}>
+                                        <label className="block text-sm font-medium text-secondary-700 mb-2 capitalize">
+                                            {field === 'includes' ? "What's Included" : field}
+                                        </label>
+                                        <div className="space-y-2">
+                                            {formData.translations[locale][field].map((item, index) => (
+                                                <div key={index} className="flex items-center space-x-2">
+                                                    <input
+                                                        type="text"
+                                                        value={item}
+                                                        onChange={(e) => updateItem(locale, field, index, e.target.value)}
+                                                        className="flex-1 px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                                                        placeholder={field}
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => removeItem(locale, field, index)}
+                                                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
+                                                    >
+                                                        <X className="w-5 h-5" />
+                                                    </button>
+                                                </div>
+                                            ))}
+                                            <button
+                                                type="button"
+                                                onClick={() => addItem(locale, field)}
+                                                className="text-primary-600 hover:text-primary-700 text-sm font-medium inline-flex items-center"
+                                            >
+                                                <Plus className="w-4 h-4 mr-1" />
+                                                Add {field === 'includes' ? 'Item' : field.slice(0, -1)}
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-
-                                {/* Includes */}
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">What&#39;s Included</label>
-                                    <div className="space-y-2">
-                                        {formData.translations[locale].includes.map((item, index) => (
-                                            <div key={index} className="flex items-center space-x-2">
-                                                <input
-                                                    type="text"
-                                                    value={item}
-                                                    onChange={(e) => updateItem(locale, 'includes', index, e.target.value)}
-                                                    className="flex-1 px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                                                    placeholder="Included item"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => removeItem(locale, 'includes', index)}
-                                                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
-                                                >
-                                                    <X className="w-5 h-5" />
-                                                </button>
-                                            </div>
-                                        ))}
-                                        <button
-                                            type="button"
-                                            onClick={() => addItem(locale, 'includes')}
-                                            className="text-primary-600 hover:text-primary-700 text-sm font-medium inline-flex items-center"
-                                        >
-                                            <Plus className="w-4 h-4 mr-1" />
-                                            Add Item
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {/* Highlights */}
-                                <div>
-                                    <label className="block text-sm font-medium text-secondary-700 mb-2">Highlights</label>
-                                    <div className="space-y-2">
-                                        {formData.translations[locale].highlights.map((highlight, index) => (
-                                            <div key={index} className="flex items-center space-x-2">
-                                                <input
-                                                    type="text"
-                                                    value={highlight}
-                                                    onChange={(e) => updateItem(locale, 'highlights', index, e.target.value)}
-                                                    className="flex-1 px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
-                                                    placeholder="Highlight"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => removeItem(locale, 'highlights', index)}
-                                                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
-                                                >
-                                                    <X className="w-5 h-5" />
-                                                </button>
-                                            </div>
-                                        ))}
-                                        <button
-                                            type="button"
-                                            onClick={() => addItem(locale, 'highlights')}
-                                            className="text-primary-600 hover:text-primary-700 text-sm font-medium inline-flex items-center"
-                                        >
-                                            <Plus className="w-4 h-4 mr-1" />
-                                            Add Highlight
-                                        </button>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     ))}
