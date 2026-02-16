@@ -133,7 +133,7 @@ npm run db:seed
 ```
 
 Bu əmr yaradır:
-- Admin user (email: admin@sabina-academy.az, password: admin123)
+- Admin user (email: admin@sabinaacademy.az, password: admin123)
 - IELTS kursu (sample)
 - London Summer Camp 2026 (sample)
 - Ughur Gambarov nəticəsi (sample)
@@ -262,7 +262,7 @@ Proyekt tam funksional strukturla yaradıldı. İndi:
 6. **Admin panelə girin**: http://localhost:3000/en/admin
 
 Admin məlumatları:
-- Email: admin@sabina-academy.az
+- Email: admin@sabinaacademy.az
 - Şifrə: admin123
 
 Uğurlar! 🚀

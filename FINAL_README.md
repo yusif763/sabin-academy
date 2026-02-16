@@ -121,7 +121,7 @@ Dil dəyiş:
 
 **Login:**
 ```
-Email: admin@sabina-academy.az
+Email: admin@sabinaacademy.az
 Şifrə: admin123
 ```
 

@@ -100,7 +100,7 @@ http://localhost:3000/en
 
 **Admin Login:**
 ```
-Email: admin@sabina-academy.az
+Email: admin@sabinaacademy.az
 Şifrə: admin123
 ```
 

@@ -17,7 +17,7 @@ npm run dev
 ## 🔑 Default Admin Girişi
 
 - **URL**: http://localhost:3000/en/admin
-- **Email**: admin@sabina-academy.az
+- **Email**: admin@sabinaacademy.az
 - **Şifrə**: admin123
 
 ## 📁 Əsas Fayllar

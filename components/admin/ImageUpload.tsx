@@ -1,124 +1,122 @@
 'use client'
 
-import { useState } from 'react'
-import { Upload, X, Image as ImageIcon } from 'lucide-react'
-import Image from "next/image";
+import { useState, useRef } from 'react'
+import { Upload, X, FileText } from 'lucide-react'
 
 interface ImageUploadProps {
-    value?: string
+    value: string
     onChange: (url: string) => void
     label?: string
+    accept?: string
 }
 
-export default function ImageUpload({ value, onChange, label = 'Image' }: ImageUploadProps) {
+export default function ImageUpload({
+                                        value,
+                                        onChange,
+                                        label = 'Upload Image',
+                                        accept = 'image/*,.pdf'
+                                    }: ImageUploadProps) {
     const [uploading, setUploading] = useState(false)
     const [error, setError] = useState('')
-    const [preview, setPreview] = useState(value || '')
+    const inputRef = useRef<HTMLInputElement>(null)
 
-    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (!file) return
-
-        // Validate file type
-        if (!file.type.startsWith('image/')) {
-            setError('Please select an image file')
-            return
-        }
-
-        // Validate file size (5MB)
-        if (file.size > 5 * 1024 * 1024) {
-            setError('File size must be less than 5MB')
-            return
-        }
-
-        setError('')
+    const handleUpload = async (file: File) => {
         setUploading(true)
+        setError('')
 
         try {
             const formData = new FormData()
             formData.append('file', file)
 
-            const response = await fetch('/api/upload', {
+            const res = await fetch('/api/upload', {
                 method: 'POST',
                 body: formData
             })
 
-            const data = await response.json()
+            const data = await res.json()
 
-            if (data.success) {
-                setPreview(data.url)
-                onChange(data.url)
-            } else {
-                setError(data.error || 'Upload failed')
-            }
-        } catch (err) {
-            setError('Upload failed. Please try again.')
+            if (!res.ok) throw new Error(data.error || 'Upload failed')
+
+            onChange(data.url)
+        } catch (err: any) {
+            setError(err.message || 'Upload failed')
         } finally {
             setUploading(false)
         }
     }
 
-    const handleRemove = () => {
-        setPreview('')
-        onChange('')
-    }
+    const isPdf = value?.toLowerCase().endsWith('.pdf')
 
     return (
         <div>
-            <label className="block text-sm font-medium text-secondary-700 mb-2">
-                {label}
-            </label>
+            {label && (
+                <label className="block text-sm font-medium text-secondary-700 mb-2">{label}</label>
+            )}
 
-            {preview ? (
-                <div className="relative">
-                    <div className="relative w-full h-48 rounded-lg overflow-hidden border-2 border-secondary-200">
-                        <Image
-                            fill
-                            src={preview}
+            {/* Preview */}
+            {value && (
+                <div className="relative mb-3 inline-block">
+                    {isPdf ? (
+                        <div className="flex items-center space-x-2 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                            <FileText className="w-6 h-6 text-red-600" />
+                            <span className="text-sm text-red-700 font-medium">PDF uploaded</span>
+                        </div>
+                    ) : (
+                        <img
+                            src={value}
                             alt="Preview"
-                            className="w-full h-full object-cover"
+                            className="h-32 w-auto rounded-lg object-cover border border-secondary-200"
                         />
-                    </div>
+                    )}
                     <button
                         type="button"
-                        onClick={handleRemove}
-                        className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                        onClick={() => onChange('')}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
                     >
-                        <X className="w-5 h-5" />
+                        <X className="w-3 h-3" />
                     </button>
                 </div>
-            ) : (
-                <div className="relative">
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        disabled={uploading}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                    />
-                    <div className={`
-            border-2 border-dashed rounded-lg p-8 text-center transition-all
-            ${uploading ? 'border-primary-500 bg-primary-50' : 'border-secondary-300 hover:border-primary-500 hover:bg-primary-50'}
-          `}>
-                        {uploading ? (
-                            <div className="space-y-2">
-                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
-                                <p className="text-sm text-primary-600 font-medium">Uploading...</p>
-                            </div>
-                        ) : (
-                            <>
-                                <Upload className="w-12 h-12 text-secondary-400 mx-auto mb-3" />
-                                <p className="text-sm font-medium text-secondary-900 mb-1">
-                                    Click to upload or drag and drop
-                                </p>
-                                <p className="text-xs text-secondary-500">
-                                    PNG, JPG, WEBP up to 5MB
-                                </p>
-                            </>
-                        )}
-                    </div>
-                </div>
             )}
+
+            {/* Upload area */}
+            <div
+                onClick={() => inputRef.current?.click()}
+                className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-colors ${
+                    uploading
+                        ? 'border-primary-300 bg-primary-50'
+                        : 'border-secondary-300 hover:border-primary-400 hover:bg-primary-50'
+                }`}
+            >
+                <input
+                    ref={inputRef}
+                    type="file"
+                    accept={accept}
+                    className="hidden"
+                    onChange={(e) => {
+                        const file = e.target.files?.[0]
+                        if (file) handleUpload(file)
+                        e.target.value = ''
+                    }}
+                />
+
+                <Upload className="w-8 h-8 mx-auto mb-2 text-secondary-400" />
+
+                {uploading ? (
+                    <div>
+                        <p className="text-sm font-semibold text-primary-600">Uploading...</p>
+                        <div className="mt-2 h-1.5 bg-secondary-200 rounded-full overflow-hidden w-32 mx-auto">
+                            <div className="h-full bg-primary-500 rounded-full animate-pulse w-2/3"></div>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <p className="text-sm font-semibold text-secondary-700">
+                            Click to upload <span className="text-xs font-normal text-secondary-400 ml-1">{value ? '(change)' : ''}</span>
+                        </p>
+                        <p className="text-xs text-secondary-500 mt-1">PNG, JPG, WEBP, PDF up to 5MB</p>
+                    </div>
+                )}
+            </div>
 
             {error && (
                 <p className="mt-2 text-sm text-red-600">{error}</p>

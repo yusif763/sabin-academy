@@ -18,6 +18,7 @@ export default function NewResultPage() {
         score: '',
         testType: '',
         image: '',
+        certificate: '',
         featured: false,
         active: true,
         date: new Date().toISOString().split('T')[0],
@@ -49,7 +50,7 @@ export default function NewResultPage() {
                 { locale: 'ru', ...formData.translations.ru }
             ]
 
-            await createResult({ ...formData, translations })
+            await createResult({ ...formData,certificate: formData.certificate || null, translations })
             router.push('/admin/results')
         } catch (err: any) {
             setError(err.message || 'Failed to create result')
@@ -164,6 +165,14 @@ export default function NewResultPage() {
                                     value={formData.image}
                                     onChange={(url) => setFormData({ ...formData, image: url })}
                                     label="Student Photo"
+                                />
+                            </div>
+                            <div className="md:col-span-2">
+                                <ImageUpload
+                                    value={formData.certificate}
+                                    onChange={(url) => setFormData({ ...formData, certificate: url })}
+                                    label="Certificate (PDF or Image)"
+                                    accept="image/*,.pdf"
                                 />
                             </div>
                         </div>

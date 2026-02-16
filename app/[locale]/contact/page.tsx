@@ -202,7 +202,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold mb-1">{t('info.email')}</h4>
                       <p className="text-secondary-600">info@sabinaacademy.com</p>
-                      <p className="text-secondary-600">admissions@sabina-academy.az</p>
+
                     </div>
                   </div>
 

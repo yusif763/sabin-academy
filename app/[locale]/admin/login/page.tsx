@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
                             value={credentials.email}
                             onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                             className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                            placeholder="admin@sabina-academy.az"
+                            placeholder="info@sabinaacademy.az"
                         />
                     </div>
 
@@ -98,7 +98,7 @@ export default function AdminLoginPage() {
                 </form>
 
                 <p className="text-center text-sm text-secondary-500 mt-6">
-                    Default: admin@sabina-academy.az / admin123
+                    Default: info@sabinaacademy.az / admin123
                 </p>
             </div>
         </div>

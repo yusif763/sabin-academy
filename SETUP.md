@@ -80,7 +80,7 @@ npm run db:seed
 ```
 
 **Default Admin Giriş:**
-- Email: `admin@sabina-academy.az`
+- Email: `admin@sabinaacademy.az`
 - Şifrə: `admin123`
 
 ⚠️ **ÖNƏMLİ:** İstehsalda bu şifrəni dərhal dəyişdirin!
