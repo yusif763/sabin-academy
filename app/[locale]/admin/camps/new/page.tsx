@@ -11,6 +11,7 @@ import { Link } from '@/routing'
 export default function NewCampPage() {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
+    const [loadingText, setLoadingText] = useState('')
     const [error, setError] = useState('')
     const [galleryImages, setGalleryImages] = useState<string[]>([])
     const [currentGalleryImage, setCurrentGalleryImage] = useState('')
@@ -28,31 +29,12 @@ export default function NewCampPage() {
         price: '',
         ageRange: '',
         translations: {
-            en: {
-                title: '',
-                description: '',
-                activities: [''],
-                includes: [''],
-                highlights: ['']
-            },
-            az: {
-                title: '',
-                description: '',
-                activities: [''],
-                includes: [''],
-                highlights: ['']
-            },
-            ru: {
-                title: '',
-                description: '',
-                activities: [''],
-                includes: [''],
-                highlights: ['']
-            }
+            en: { title: '', description: '', activities: [''], includes: [''], highlights: [''] },
+            az: { title: '', description: '', activities: [''], includes: [''], highlights: [''] },
+            ru: { title: '', description: '', activities: [''], includes: [''], highlights: [''] }
         }
     })
 
-    // Gallery handlers
     const handleAddGalleryImage = () => {
         if (!currentGalleryImage) return
         setGalleryImages(prev => [...prev, currentGalleryImage])
@@ -69,28 +51,32 @@ export default function NewCampPage() {
         setError('')
 
         try {
+            // Step 1: Camp yarat
+            setLoadingText('Creating camp...')
             const translations = [
                 { locale: 'en', ...formData.translations.en },
                 { locale: 'az', ...formData.translations.az },
                 { locale: 'ru', ...formData.translations.ru }
             ]
-
-            // 1) Camp yarat
             const camp = await createCamp({ ...formData, translations })
-
-            // 2) Gallery şəkillərini arxa planda əlavə et
+            console.log('Camp created:', camp.id)           // ← LOG
+            console.log('Gallery images:', galleryImages)   // ← LOG
+            // Step 2: Gallery şəkilləri əlavə et
             if (galleryImages.length > 0) {
-                await Promise.all(
-                    galleryImages.map((image) => addGalleryImage(camp.id, image))
-                )
+                setLoadingText(`Uploading gallery (0/${galleryImages.length})...`)
+                for (let i = 0; i < galleryImages.length; i++) {
+                    setLoadingText(`Uploading gallery (${i + 1}/${galleryImages.length})...`)
+                    await addGalleryImage(camp.id, galleryImages[i])
+                }
             }
 
-            // 3) Redirect
+            // Step 3: Redirect
+            setLoadingText('Done! Redirecting...')
             router.push('/admin/camps')
         } catch (err: any) {
             setError(err.message || 'Failed to create camp')
-        } finally {
             setLoading(false)
+            setLoadingText('')
         }
     }
 
@@ -127,10 +113,7 @@ export default function NewCampPage() {
             ...formData,
             translations: {
                 ...formData.translations,
-                [locale]: {
-                    ...formData.translations[locale],
-                    [field]: newItems
-                }
+                [locale]: { ...formData.translations[locale], [field]: newItems }
             }
         })
     }
@@ -138,6 +121,17 @@ export default function NewCampPage() {
     return (
         <div>
             <AdminHeader title="Add New Summer Camp" />
+
+            {/* Loading Overlay */}
+            {loading && (
+                <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+                    <div className="bg-white rounded-2xl p-8 shadow-2xl text-center max-w-sm w-full mx-4">
+                        <div className="w-16 h-16 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                        <p className="text-lg font-semibold text-secondary-900 mb-1">Please wait...</p>
+                        <p className="text-sm text-secondary-500">{loadingText}</p>
+                    </div>
+                </div>
+            )}
 
             <div className="p-8">
                 <div className="mb-6">
@@ -157,7 +151,6 @@ export default function NewCampPage() {
                     {/* General Info */}
                     <div className="bg-white rounded-xl border border-secondary-200 p-6 mb-6">
                         <h3 className="text-lg font-bold text-secondary-900 mb-4">General Information</h3>
-
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">Slug (URL) *</label>
@@ -170,7 +163,6 @@ export default function NewCampPage() {
                                     placeholder="london-2026"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">Year *</label>
                                 <input
@@ -181,7 +173,6 @@ export default function NewCampPage() {
                                     className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">Location *</label>
                                 <input
@@ -193,7 +184,6 @@ export default function NewCampPage() {
                                     placeholder="London, UK"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">Age Range</label>
                                 <input
@@ -204,7 +194,6 @@ export default function NewCampPage() {
                                     placeholder="12-17"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">Start Date *</label>
                                 <input
@@ -215,7 +204,6 @@ export default function NewCampPage() {
                                     className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">End Date *</label>
                                 <input
@@ -226,9 +214,8 @@ export default function NewCampPage() {
                                     className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                                 />
                             </div>
-
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">Price *</label>
+                                <label className="block text-sm font-medium text-secondary-700 mb-2">Price</label>
                                 <input
                                     type="text"
                                     value={formData.price}
@@ -237,7 +224,6 @@ export default function NewCampPage() {
                                     placeholder="2500 EUR"
                                 />
                             </div>
-
                             <div>
                                 <label className="block text-sm font-medium text-secondary-700 mb-2">Available Spots</label>
                                 <input
@@ -247,7 +233,6 @@ export default function NewCampPage() {
                                     className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                                 />
                             </div>
-
                             <div className="flex items-center space-x-6">
                                 <label className="flex items-center space-x-2">
                                     <input
@@ -268,7 +253,6 @@ export default function NewCampPage() {
                                     <span className="text-sm font-medium text-secondary-700">Active</span>
                                 </label>
                             </div>
-
                             <div className="md:col-span-2">
                                 <ImageUpload
                                     value={formData.image}
@@ -279,80 +263,61 @@ export default function NewCampPage() {
                         </div>
                     </div>
 
-                    {/* ─── GALLERY SECTION ─── */}
+                    {/* Gallery Section */}
                     <div className="bg-white rounded-xl border border-secondary-200 p-6 mb-6">
                         <h3 className="text-lg font-bold text-secondary-900 mb-4">
                             Gallery Images
                             <span className="ml-2 text-sm font-normal text-secondary-500">
-                                ({galleryImages.length} images)
+                                ({galleryImages.length} images added)
                             </span>
                         </h3>
 
-                        {/* Upload yeni şəkil */}
-                        <div className="mb-4">
-                            <ImageUpload
-                                value={currentGalleryImage}
-                                onChange={setCurrentGalleryImage}
-                                label="Upload Gallery Image"
-                            />
-                            {currentGalleryImage && (
-                                <button
-                                    type="button"
-                                    onClick={handleAddGalleryImage}
-                                    className="mt-3 inline-flex items-center space-x-2 px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors text-sm font-medium"
-                                >
-                                    <Plus className="w-4 h-4" />
-                                    <span>Add to Gallery</span>
-                                </button>
-                            )}
-                        </div>
+                        {/* ← DƏYİŞ: onChange-də birbaşa galleryImages-ə əlavə et */}
+                        <ImageUpload
+                            value=""
+                            onChange={(url) => {
+                                if (url) setGalleryImages(prev => [...prev, url])
+                            }}
+                            label="Upload Gallery Image"
+                        />
 
-                        {/* Gallery preview */}
-                        {galleryImages.length > 0 && (
+                        {/* Preview grid */}
+                        {galleryImages.length > 0 ? (
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                                 {galleryImages.map((img, index) => (
-                                    <div
-                                        key={index}
-                                        className="relative group aspect-square rounded-xl overflow-hidden bg-secondary-100"
-                                    >
+                                    <div key={index} className="relative group aspect-square rounded-xl overflow-hidden bg-secondary-100">
                                         <img
                                             src={img}
                                             alt={`Gallery ${index + 1}`}
                                             className="w-full h-full object-cover"
                                         />
-                                        {/* Delete overlay */}
                                         <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                                             <button
                                                 type="button"
                                                 onClick={() => handleRemoveGalleryImage(index)}
-                                                className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+                                                className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
                                             >
                                                 <X className="w-5 h-5" />
                                             </button>
                                         </div>
-                                        {/* Order badge */}
                                         <div className="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
                                             {index + 1}
                                         </div>
                                     </div>
                                 ))}
                             </div>
-                        )}
-
-                        {galleryImages.length === 0 && (
-                            <p className="text-sm text-secondary-500 mt-2">
+                        ) : (
+                            <p className="text-sm text-secondary-400 italic mt-3">
                                 No gallery images yet. Upload images above.
                             </p>
                         )}
                     </div>
-
                     {/* Translations */}
                     {(['en', 'az', 'ru'] as const).map((locale) => (
                         <div key={locale} className="bg-white rounded-xl border border-secondary-200 p-6 mb-6">
                             <h3 className="text-lg font-bold text-secondary-900 mb-4">
                                 {locale === 'en' ? '🇬🇧 English' : locale === 'az' ? '🇦🇿 Azərbaycan' : '🇷🇺 Русский'}
                             </h3>
-
                             <div className="space-y-4">
                                 <div>
                                     <label className="block text-sm font-medium text-secondary-700 mb-2">Title *</label>
@@ -370,7 +335,6 @@ export default function NewCampPage() {
                                         className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                                     />
                                 </div>
-
                                 <div>
                                     <label className="block text-sm font-medium text-secondary-700 mb-2">Description *</label>
                                     <textarea
@@ -387,7 +351,6 @@ export default function NewCampPage() {
                                         className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500"
                                     />
                                 </div>
-
                                 {(['activities', 'includes', 'highlights'] as const).map((field) => (
                                     <div key={field}>
                                         <label className="block text-sm font-medium text-secondary-700 mb-2 capitalize">
@@ -427,7 +390,6 @@ export default function NewCampPage() {
                         </div>
                     ))}
 
-                    {/* Actions */}
                     <div className="flex items-center justify-end space-x-4">
                         <Link
                             href="/admin/camps"
@@ -441,7 +403,7 @@ export default function NewCampPage() {
                             className="btn-primary inline-flex items-center space-x-2 disabled:opacity-50"
                         >
                             <Save className="w-5 h-5" />
-                            <span>{loading ? 'Creating...' : 'Create Camp'}</span>
+                            <span>Create Camp</span>
                         </button>
                     </div>
                 </form>

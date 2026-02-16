@@ -6,20 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d6848597-5d1c-44d4-9952-c5424033e10c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/COMPLETE_INSTALLATION.md" beforeDir="false" afterPath="$PROJECT_DIR$/COMPLETE_INSTALLATION.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/COMPLETE_README.md" beforeDir="false" afterPath="$PROJECT_DIR$/COMPLETE_README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FINAL_README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FINAL_README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_SUMMARY.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_SUMMARY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QUICKSTART.md" beforeDir="false" afterPath="$PROJECT_DIR$/QUICKSTART.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SETUP.md" beforeDir="false" afterPath="$PROJECT_DIR$/SETUP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/results/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/results/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/contact/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/upload/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/upload/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin/ImageUpload.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/ImageUpload.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/camps/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/camps/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/camps/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/camps/new/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/[locale]/camps/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/camps/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/admin/CampEditForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/CampEditForm.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
