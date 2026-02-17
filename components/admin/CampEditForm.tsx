@@ -325,7 +325,7 @@ export default function CampEditForm({ camp }: { camp: any }) {
                         label="Add Gallery Image"
                     />
                     <p className="text-xs text-secondary-400 mt-2">
-                        Şəkil seçin → avtomatik əlavə olunur → "Update Camp" ilə save edin
+                        Şəkil seçin → avtomatik əlavə olunur → &quot;Update Camp&quot; ilə save edin
                     </p>
                 </div>
 

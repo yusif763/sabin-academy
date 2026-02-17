@@ -15,18 +15,14 @@ export default async function HomePage() {
 
   return (
     <div>
-      {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100"></div>
         
-        {/* Decorative Elements */}
         <div className="absolute top-20 right-20 w-72 h-72 bg-primary-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary-300 rounded-full blur-3xl opacity-20 animate-pulse animation-delay-400"></div>
 
         <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
             <div className="space-y-8 animate-fade-in">
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight">
@@ -61,7 +57,6 @@ export default async function HomePage() {
                 />
               </div>
               
-              {/* Floating Card */}
               <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-2xl p-6 animate-slide-up animation-delay-400">
                 <div className="flex items-center space-x-4">
                   <div className="w-14 h-14 bg-primary-500 rounded-xl flex items-center justify-center">
@@ -78,7 +73,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -118,7 +112,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Summer Camps CTA */}
       <section className="py-20 bg-secondary-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500 rounded-full blur-3xl"></div>
