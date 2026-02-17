@@ -24,13 +24,7 @@ export type SummerCampWithTranslations = SummerCamp & {
   }>
 }
 
-export type ResultWithTranslations = Result & {
-  translations: Array<{
-    locale: string
-    testimonial?: string
-    courseType?: string
-  }>
-}
+export type ResultWithTranslations = Result
 
 export type PostWithTranslations = Post & {
   translations: Array<{
@@ -101,18 +95,9 @@ export interface SummerCampFormData {
 }
 
 export interface ResultFormData {
-  studentName: string
-  score: string
-  testType: string
-  image?: string
-  featured: boolean
-  date: Date
-  translations: {
-    [locale: string]: {
-      testimonial?: string
-      courseType?: string
-    }
-  }
+  image: string
+  active: boolean
+  order: number
 }
 
 // Locale type

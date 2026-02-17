@@ -12,7 +12,7 @@ export default async function EditResultPage({ params }: { params: { id: string 
 
     return (
         <div>
-            <AdminHeader title="Edit Student Result" />
+            <AdminHeader title="Nəticəni Redaktə Et" />
             <div className="p-8">
                 <ResultEditForm result={result} />
             </div>

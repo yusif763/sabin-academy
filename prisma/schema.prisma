@@ -88,34 +88,14 @@ model SummerCampTranslation {
   @@unique([summerCampId, locale])
 }
 
-// Student Results/Achievements
+// Student Results/Achievements (image gallery)
 model Result {
   id          String   @id @default(cuid())
-  studentName String
-  score       String   // e.g., "7.0" for IELTS
-  testType    String   // IELTS, DIM, etc.
-  image       String?  // Student photo or certificate
-  certificate String?
-  featured    Boolean  @default(false)
-  date        DateTime
+  image       String   // Result image
   active      Boolean  @default(true)
+  order       Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  
-  // Translations for testimonials
-  translations ResultTranslation[]
-}
-
-model ResultTranslation {
-  id          String   @id @default(cuid())
-  resultId    String
-  locale      String   // en, az, ru
-  testimonial String?  @db.Text
-  courseType  String?  // Course they took
-  
-  result      Result   @relation(fields: [resultId], references: [id], onDelete: Cascade)
-  
-  @@unique([resultId, locale])
 }
 
 // Gallery for general images

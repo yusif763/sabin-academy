@@ -7,20 +7,17 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const { searchParams } = new URL(request.url)
-    const locale = searchParams.get('locale')
     const { id } = params
 
     const result = await prisma.result.findUnique({
-      where: { id },
-      include: { translations: locale ? { where: { locale } } : true }
+      where: { id }
     })
 
     if (!result) {
       return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Result not found' 
+        {
+          success: false,
+          error: 'Result not found'
         },
         { status: 404 }
       )
@@ -33,10 +30,10 @@ export async function GET(
   } catch (error: any) {
     console.error('Error fetching result:', error)
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Failed to fetch result',
-        message: error.message 
+        message: error.message
       },
       { status: 500 }
     )
@@ -52,31 +49,13 @@ export async function PUT(
     const body = await request.json()
     const { id } = params
 
-    // Delete existing translations
-    await prisma.resultTranslation.deleteMany({ 
-      where: { resultId: id } 
-    })
-
-    // Update result with new translations
     const result = await prisma.result.update({
       where: { id },
       data: {
-        studentName: body.studentName,
-        score: body.score,
-        testType: body.testType,
-        image: body.image || '',
-        featured: body.featured || false,
-        active: body.active !== undefined ? body.active : true,
-        date: new Date(body.date),
-        translations: {
-          create: body.translations.map((t: any) => ({
-            locale: t.locale,
-            testimonial: t.testimonial || '',
-            courseType: t.courseType || ''
-          }))
-        }
-      },
-      include: { translations: true }
+        ...(body.image !== undefined && { image: body.image }),
+        ...(body.active !== undefined && { active: body.active }),
+        ...(body.order !== undefined && { order: body.order })
+      }
     })
 
     return NextResponse.json({
@@ -87,10 +66,10 @@ export async function PUT(
   } catch (error: any) {
     console.error('Error updating result:', error)
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Failed to update result',
-        message: error.message 
+        message: error.message
       },
       { status: 500 }
     )
@@ -116,10 +95,10 @@ export async function DELETE(
   } catch (error: any) {
     console.error('Error deleting result:', error)
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Failed to delete result',
-        message: error.message 
+        message: error.message
       },
       { status: 500 }
     )
