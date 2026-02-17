@@ -82,29 +82,10 @@ export async function GET(request: Request) {
       results.camps = camps
     }
 
-    // Search results (student achievements)
+    // Results are image-only, no text fields to search
     if (!type || type === 'all' || type === 'results') {
       const studentResults = await prisma.result.findMany({
-        where: {
-          active: true,
-          OR: [
-            { studentName: { contains: searchTerm, mode: 'insensitive' } },
-            { testType: { contains: searchTerm, mode: 'insensitive' } },
-            { translations: {
-                some: {
-                  locale,
-                  OR: [
-                    { testimonial: { contains: searchTerm, mode: 'insensitive' } },
-                    { courseType: { contains: searchTerm, mode: 'insensitive' } }
-                  ]
-                }
-              }
-            }
-          ]
-        },
-        include: {
-          translations: { where: { locale } }
-        },
+        where: { active: true },
         take: 10
       })
       results.results = studentResults

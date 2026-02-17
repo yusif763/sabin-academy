@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6848597-5d1c-44d4-9952-c5424033e10c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/results.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/results.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/results/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/results/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/results/new/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/results/new/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/admin/results/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/admin/results/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[locale]/results/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[locale]/results/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/results/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/results/[id]/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/results/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/results/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/admin/ResultEditForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/admin/ResultEditForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/search/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/search/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/stats/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/stats/route.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

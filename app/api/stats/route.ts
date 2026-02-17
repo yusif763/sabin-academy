@@ -13,7 +13,7 @@ export async function GET() {
       activeCamps,
       featuredCamps,
       totalResults,
-      featuredResults,
+      activeResults,
       totalContacts,
       unreadContacts
     ] = await Promise.all([
@@ -24,7 +24,7 @@ export async function GET() {
       prisma.summerCamp.count({ where: { active: true } }),
       prisma.summerCamp.count({ where: { featured: true } }),
       prisma.result.count(),
-      prisma.result.count({ where: { featured: true } }),
+      prisma.result.count({ where: { active: true } }),
       prisma.contact.count(),
       prisma.contact.count({ where: { read: false } })
     ])
@@ -40,7 +40,7 @@ export async function GET() {
         include: { translations: { where: { locale: 'en' } } }
       }),
       prisma.result.findFirst({
-        orderBy: { date: 'desc' }
+        orderBy: { createdAt: 'desc' }
       }),
       prisma.contact.findFirst({
         orderBy: { createdAt: 'desc' }
@@ -62,7 +62,7 @@ export async function GET() {
       },
       results: {
         total: totalResults,
-        featured: featuredResults,
+        active: activeResults,
         latest: latestResult
       },
       contacts: {
