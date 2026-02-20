@@ -1,12 +1,19 @@
-'use server'
+''
 
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
-export async function getResults() {
+export const RESULT_CATEGORIES = ['IELTS', 'DIM9', 'DIM11', 'CAMBRIDGE'] as const
+export type ResultCategory = typeof RESULT_CATEGORIES[number]
+
+export async function getResults(category?: string) {
   try {
+    const where: any = { active: true }
+    if (category && category !== 'ALL') {
+      where.category = category
+    }
     const results = await prisma.result.findMany({
-      where: { active: true },
+      where,
       orderBy: [
         { order: 'asc' },
         { createdAt: 'desc' }
@@ -19,9 +26,14 @@ export async function getResults() {
   }
 }
 
-export async function getAllResults() {
+export async function getAllResults(category?: string) {
   try {
+    const where: any = {}
+    if (category && category !== 'ALL') {
+      where.category = category
+    }
     const results = await prisma.result.findMany({
+      where,
       orderBy: [
         { order: 'asc' },
         { createdAt: 'desc' }
@@ -46,11 +58,17 @@ export async function getResultById(id: string) {
   }
 }
 
-export async function createResult(data: { image: string; active?: boolean; order?: number }) {
+export async function createResult(data: {
+  image: string
+  category: string
+  active?: boolean
+  order?: number
+}) {
   try {
     const result = await prisma.result.create({
       data: {
         image: data.image,
+        category: data.category || 'IELTS',
         active: data.active !== undefined ? data.active : true,
         order: data.order || 0
       }
@@ -66,12 +84,18 @@ export async function createResult(data: { image: string; active?: boolean; orde
   }
 }
 
-export async function updateResult(id: string, data: { image?: string; active?: boolean; order?: number }) {
+export async function updateResult(id: string, data: {
+  image?: string
+  category?: string
+  active?: boolean
+  order?: number
+}) {
   try {
     const result = await prisma.result.update({
       where: { id },
       data: {
         ...(data.image !== undefined && { image: data.image }),
+        ...(data.category !== undefined && { category: data.category }),
         ...(data.active !== undefined && { active: data.active }),
         ...(data.order !== undefined && { order: data.order })
       }

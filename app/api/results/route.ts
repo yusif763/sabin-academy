@@ -6,11 +6,16 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const active = searchParams.get('active')
+    const category = searchParams.get('category')
 
     const where: any = {}
 
     if (active !== 'false') {
       where.active = true
+    }
+
+    if (category && category !== 'ALL') {
+      where.category = category
     }
 
     const results = await prisma.result.findMany({
@@ -47,6 +52,7 @@ export async function POST(request: Request) {
     const result = await prisma.result.create({
       data: {
         image: body.image,
+        category: body.category || 'IELTS',
         active: body.active !== undefined ? body.active : true,
         order: body.order || 0
       }

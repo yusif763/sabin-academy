@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { getResults } from '@/actions/results'
-import Image from 'next/image'
 import { Trophy } from 'lucide-react'
+import ResultsGallery from '@/components/ResultsGallery'
 
 export default async function ResultsPage({ params }: { params: { locale: string } }) {
     const t = await getTranslations('results')
@@ -23,36 +23,10 @@ export default async function ResultsPage({ params }: { params: { locale: string
                 </div>
             </section>
 
-            {/* Image Gallery */}
+            {/* Gallery with category tabs */}
             <section className="py-20">
                 <div className="container-custom">
-                    {results.length > 0 ? (
-                        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-                            {results.map((result: any) => (
-                                <div
-                                    key={result.id}
-                                    className="break-inside-avoid overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300"
-                                >
-                                    <div className="relative w-full">
-                                        <Image
-                                            src={result.image}
-                                            alt="Result"
-                                            width={600}
-                                            height={400}
-                                            className="w-full h-auto object-cover"
-                                            unoptimized
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="text-center py-20">
-                            <Trophy className="w-16 h-16 mx-auto mb-4 text-secondary-300" />
-                            <h3 className="text-2xl font-bold mb-2">{t('noResults')}</h3>
-                            <p className="text-secondary-600">{t('noResultsDescription')}</p>
-                        </div>
-                    )}
+                    <ResultsGallery results={results} noResultsTitle={t('noResults')} noResultsDesc={t('noResultsDescription')} />
                 </div>
             </section>
 

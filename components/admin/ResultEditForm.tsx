@@ -12,8 +12,16 @@ export default function ResultEditForm({ result }: { result: any }) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
+    const CATEGORIES = [
+        { key: 'IELTS', label: 'IELTS' },
+        { key: 'DIM9', label: 'DIM 9' },
+        { key: 'DIM11', label: 'DIM 11' },
+        { key: 'CAMBRIDGE', label: 'Cambridge' },
+    ]
+
     const [formData, setFormData] = useState({
         image: result.image || '',
+        category: result.category || 'IELTS',
         active: result.active !== undefined ? result.active : true,
         order: result.order || 0
     })
@@ -87,6 +95,29 @@ export default function ResultEditForm({ result }: { result: any }) {
 
                 <div className="bg-white rounded-xl border border-secondary-200 p-6 mb-6">
                     <h3 className="text-lg font-bold text-secondary-900 mb-4">Parametrlər</h3>
+
+                    {/* Category */}
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-secondary-700 mb-2">
+                            Kateqoriya *
+                        </label>
+                        <div className="flex flex-wrap gap-2">
+                            {CATEGORIES.map((cat) => (
+                                <button
+                                    key={cat.key}
+                                    type="button"
+                                    onClick={() => setFormData({ ...formData, category: cat.key })}
+                                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                                        formData.category === cat.key
+                                            ? 'bg-primary-600 text-white'
+                                            : 'bg-secondary-100 text-secondary-600 hover:bg-secondary-200'
+                                    }`}
+                                >
+                                    {cat.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
 
                     <div className="flex items-center space-x-6">
                         <label className="flex items-center space-x-2 cursor-pointer">

@@ -6,13 +6,27 @@ import { Link } from '@/routing'
 import { Plus, Edit, Trash2, Eye } from 'lucide-react'
 import Image from 'next/image'
 import { getAllResults, deleteResult } from '@/actions/results'
-import { useRouter } from 'next/navigation'
+
+const CATEGORIES = [
+    { key: 'ALL', label: 'Hamısı' },
+    { key: 'IELTS', label: 'IELTS' },
+    { key: 'DIM9', label: 'DIM 9' },
+    { key: 'DIM11', label: 'DIM 11' },
+    { key: 'CAMBRIDGE', label: 'Cambridge' },
+]
+
+const CATEGORY_COLORS: Record<string, string> = {
+    IELTS: 'bg-blue-100 text-blue-700',
+    DIM9: 'bg-purple-100 text-purple-700',
+    DIM11: 'bg-orange-100 text-orange-700',
+    CAMBRIDGE: 'bg-green-100 text-green-700',
+}
 
 export default function ResultsAdminPage() {
-    const router = useRouter()
     const [results, setResults] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
     const [deletingId, setDeletingId] = useState<string | null>(null)
+    const [activeCategory, setActiveCategory] = useState('ALL')
 
     useEffect(() => {
         loadResults()
@@ -31,12 +45,16 @@ export default function ResultsAdminPage() {
         try {
             await deleteResult(id)
             setResults((prev) => prev.filter((r) => r.id !== id))
-        } catch (err) {
+        } catch {
             alert('Silinmə zamanı xəta baş verdi')
         } finally {
             setDeletingId(null)
         }
     }
+
+    const filtered = activeCategory === 'ALL'
+        ? results
+        : results.filter((r) => r.category === activeCategory)
 
     return (
         <div>
@@ -58,19 +76,48 @@ export default function ResultsAdminPage() {
                     </Link>
                 </div>
 
+                {/* Category Filter Tabs */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                    {CATEGORIES.map((cat) => {
+                        const count = cat.key === 'ALL'
+                            ? results.length
+                            : results.filter((r) => r.category === cat.key).length
+                        return (
+                            <button
+                                key={cat.key}
+                                onClick={() => setActiveCategory(cat.key)}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                                    activeCategory === cat.key
+                                        ? 'bg-primary-600 text-white shadow-sm'
+                                        : 'bg-white border border-secondary-200 text-secondary-600 hover:border-primary-400 hover:text-primary-600'
+                                }`}
+                            >
+                                {cat.label}
+                                <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+                                    activeCategory === cat.key ? 'bg-white/20' : 'bg-secondary-100'
+                                }`}>
+                                    {count}
+                                </span>
+                            </button>
+                        )
+                    })}
+                </div>
+
                 {loading ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[...Array(8)].map((_, i) => (
                             <div key={i} className="bg-secondary-100 rounded-xl h-64 animate-pulse" />
                         ))}
                     </div>
-                ) : results.length === 0 ? (
+                ) : filtered.length === 0 ? (
                     <div className="bg-white rounded-xl border border-secondary-200 p-12 text-center">
-                        <p className="text-secondary-500">Hələ nəticə yoxdur. İlk şəkili əlavə edin!</p>
+                        <p className="text-secondary-500">
+                            {results.length === 0 ? 'Hələ nəticə yoxdur. İlk şəkili əlavə edin!' : 'Bu kateqoriyada şəkil yoxdur.'}
+                        </p>
                     </div>
                 ) : (
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {results.map((result: any) => (
+                        {filtered.map((result: any) => (
                             <div
                                 key={result.id}
                                 className="bg-white rounded-xl border border-secondary-200 overflow-hidden hover:shadow-lg transition-shadow group"
@@ -85,8 +132,14 @@ export default function ResultsAdminPage() {
                                         className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                                         unoptimized
                                     />
-                                    {/* Status badge */}
+                                    {/* Category badge */}
                                     <div className="absolute top-3 left-3">
+                                        <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${CATEGORY_COLORS[result.category] || 'bg-gray-100 text-gray-700'}`}>
+                                            {result.category === 'DIM9' ? 'DIM 9' : result.category === 'DIM11' ? 'DIM 11' : result.category}
+                                        </span>
+                                    </div>
+                                    {/* Status badge */}
+                                    <div className="absolute top-3 right-3">
                                         <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold ${
                                             result.active
                                                 ? 'bg-green-100 text-green-800'

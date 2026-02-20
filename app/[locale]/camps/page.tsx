@@ -8,6 +8,8 @@ export default async function CampsPage({ params }: { params: { locale: string }
   const t = await getTranslations('camps')
   const camps = await getCamps(params.locale)
   
+  const now = new Date()
+
   // Group by year
   const campsByYear: { [key: number]: any[] } = {}
   camps.forEach((camp: any) => {
@@ -16,7 +18,7 @@ export default async function CampsPage({ params }: { params: { locale: string }
     }
     campsByYear[camp.year].push(camp)
   })
-  
+
   const years = Object.keys(campsByYear).map(Number).sort((a, b) => b - a)
   const featured = camps.filter((c: any) => c.featured)
 
@@ -61,38 +63,46 @@ export default async function CampsPage({ params }: { params: { locale: string }
             
             {featured.map((camp: any) => {
               const trans = camp.translations[0]
+              const isExpired = new Date(camp.endDate) < now
               return (
                 <Link href={`/camps/${camp.slug}`} key={camp.id}>
-                  <div className="card overflow-hidden hover:shadow-2xl transition-all max-w-5xl mx-auto group">
+                  <div className={`card overflow-hidden hover:shadow-2xl transition-all max-w-5xl mx-auto group ${isExpired ? 'opacity-70 grayscale-[30%]' : ''}`}>
                     <div className="grid md:grid-cols-2 gap-0">
                       {camp.image && (
                         <div className="relative h-64 md:h-auto overflow-hidden">
                           <Image
-                            src={camp.image} 
+                            src={camp.image}
                             alt={trans?.title}
                             fill
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
-                          <div className="absolute top-4 left-4 bg-yellow-400 text-secondary-900 px-4 py-2 rounded-full font-bold flex items-center">
-                            <Star className="w-4 h-4 mr-2 fill-current" />
-                            {t('featured')}
+                          <div className="absolute top-4 left-4 flex flex-col gap-2">
+                            <div className="bg-yellow-400 text-secondary-900 px-4 py-2 rounded-full font-bold flex items-center">
+                              <Star className="w-4 h-4 mr-2 fill-current" />
+                              {t('featured')}
+                            </div>
+                            {isExpired && (
+                              <div className="bg-red-500 text-white px-4 py-2 rounded-full font-bold text-sm">
+                                Başa çatıb
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
-                      
+
                       <div className="p-8">
                         <div className="mb-4">
                           <span className="inline-block bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm font-semibold">
                             {camp.year}
                           </span>
                         </div>
-                        
+
                         <h3 className="text-3xl font-bold mb-4 group-hover:text-primary-600 transition-colors">
                           {trans?.title}
                         </h3>
-                        
+
                         <p className="text-secondary-600 mb-6 line-clamp-3">{trans?.description}</p>
-                        
+
                         <div className="space-y-3 mb-6">
                           <div className="flex items-center text-secondary-700">
                             <MapPin className="w-5 h-5 mr-2 text-primary-500" />
@@ -107,12 +117,16 @@ export default async function CampsPage({ params }: { params: { locale: string }
                             {t('ages')} {camp.ageRange}
                           </div>
                         </div>
-                        
+
                         <div className="flex items-center justify-between pt-4 border-t">
                           <div className="text-2xl font-bold text-primary-600">{camp.price}</div>
-                          <span className="text-primary-600 font-semibold group-hover:underline inline-flex items-center">
-                            {t('learnMore')} <ArrowRight className="w-4 h-4 ml-1" />
-                          </span>
+                          {isExpired ? (
+                            <span className="text-secondary-400 text-sm font-semibold">Qeydiyyat bağlıdır</span>
+                          ) : (
+                            <span className="text-primary-600 font-semibold group-hover:underline inline-flex items-center">
+                              {t('learnMore')} <ArrowRight className="w-4 h-4 ml-1" />
+                            </span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -138,24 +152,30 @@ export default async function CampsPage({ params }: { params: { locale: string }
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {campsByYear[year].filter((c: any) => !c.featured).map((camp: any) => {
                     const trans = camp.translations[0]
+                    const isExpired = new Date(camp.endDate) < now
                     return (
                       <Link href={`/camps/${camp.slug}`} key={camp.id}>
-                        <div className="card hover:shadow-2xl transition-all h-full">
+                        <div className={`card hover:shadow-2xl transition-all h-full ${isExpired ? 'opacity-60' : ''}`}>
                           {camp.image && (
                             <div className="relative h-48 overflow-hidden">
                               <Image
                                 src={camp.image}
                                 fill
-                                alt={trans?.title} 
-                                className="w-full h-full object-cover" 
+                                alt={trans?.title}
+                                className={`w-full h-full object-cover ${isExpired ? 'grayscale-[50%]' : ''}`}
                               />
+                              {isExpired && (
+                                <div className="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                                  Başa çatıb
+                                </div>
+                              )}
                             </div>
                           )}
-                          
+
                           <div className="p-6">
                             <h3 className="text-xl font-bold mb-3">{trans?.title}</h3>
                             <p className="text-secondary-600 mb-4 line-clamp-2">{trans?.description}</p>
-                            
+
                             <div className="space-y-2 text-sm mb-4">
                               <div className="flex items-center text-secondary-600">
                                 <MapPin className="w-4 h-4 mr-2" />
@@ -166,10 +186,18 @@ export default async function CampsPage({ params }: { params: { locale: string }
                                 {camp.ageRange}
                               </div>
                             </div>
-                            
+
                             <div className="flex items-center justify-between pt-4 border-t">
-                              <div className="text-xl font-bold text-primary-600">{camp.price}</div>
-                              <div className="text-sm text-secondary-500">{camp.spots} {t('spotsAvailable')}</div>
+                              <div className={`text-xl font-bold ${isExpired ? 'text-secondary-400' : 'text-primary-600'}`}>
+                                {camp.price}
+                              </div>
+                              {isExpired ? (
+                                <span className="text-xs text-red-500 font-semibold bg-red-50 px-2 py-1 rounded-full">
+                                  Qeydiyyat bağlıdır
+                                </span>
+                              ) : (
+                                <div className="text-sm text-secondary-500">{camp.spots} {t('spotsAvailable')}</div>
+                              )}
                             </div>
                           </div>
                         </div>

@@ -53,6 +53,7 @@ export async function PUT(
       where: { id },
       data: {
         ...(body.image !== undefined && { image: body.image }),
+        ...(body.category !== undefined && { category: body.category }),
         ...(body.active !== undefined && { active: body.active }),
         ...(body.order !== undefined && { order: body.order })
       }

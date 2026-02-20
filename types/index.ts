@@ -96,6 +96,7 @@ export interface SummerCampFormData {
 
 export interface ResultFormData {
   image: string
+  category: string
   active: boolean
   order: number
 }

@@ -22,6 +22,9 @@ export default async function CampDetailPage({
         (1000 * 60 * 60 * 24)
     )
 
+    const isExpired = new Date(camp.endDate) < new Date()
+    const isAvailable = camp.active && !isExpired
+
     return (
         <div className="min-h-screen">
             {/* Hero */}
@@ -33,12 +36,19 @@ export default async function CampDetailPage({
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-4xl">
-                        {camp.featured && (
-                            <div className="inline-flex items-center bg-yellow-400 text-secondary-900 px-4 py-2 rounded-full mb-4">
-                                <Star className="w-4 h-4 mr-2 fill-current" />
-                                <span className="font-semibold text-sm">{t('featured')}</span>
-                            </div>
-                        )}
+                        <div className="flex flex-wrap gap-3 mb-4">
+                            {camp.featured && (
+                                <div className="inline-flex items-center bg-yellow-400 text-secondary-900 px-4 py-2 rounded-full">
+                                    <Star className="w-4 h-4 mr-2 fill-current" />
+                                    <span className="font-semibold text-sm">{t('featured')}</span>
+                                </div>
+                            )}
+                            {isExpired && (
+                                <div className="inline-flex items-center bg-red-500 text-white px-4 py-2 rounded-full">
+                                    <span className="font-semibold text-sm">Başa çatıb</span>
+                                </div>
+                            )}
+                        </div>
                         <h1 className="text-4xl md:text-5xl font-display font-bold mb-6">
                             {trans.title}
                         </h1>
@@ -146,14 +156,14 @@ export default async function CampDetailPage({
                         {/* Sidebar */}
 
                         <div className="space-y-6">
-                            {camp.isActive && (
+                                {isAvailable ? (
                                 <div className="card p-6 sticky top-24 bg-gradient-to-br from-primary-500 to-primary-600 text-white">
                                     <h3 className="text-2xl font-bold mb-4">{t('registerNow')}</h3>
                                     <div className="bg-white/20 rounded-lg p-4 mb-4">
                                         <p className="text-sm opacity-90">{t('totalPrice')}</p>
                                         <p className="text-3xl font-bold">{camp.price}</p>
                                     </div>
-                                    {camp.spots && camp.spots < 10 && camp.isActive && (
+                                    {camp.spots && camp.spots < 10 && (
                                         <div className="bg-yellow-400 text-secondary-900 rounded-lg p-3 mb-4 text-sm font-semibold text-center">
                                             {t('onlySpots', { count: camp.spots })}
                                         </div>
@@ -165,6 +175,28 @@ export default async function CampDetailPage({
                                         {t('registerButton')}
                                     </Link>
                                     <p className="text-sm text-center mt-4 opacity-90">{t('registerInfo')}</p>
+                                </div>
+                            ) : (
+                                <div className="card p-6 sticky top-24 bg-secondary-100 border-2 border-secondary-200">
+                                    <div className="text-center">
+                                        <div className="w-16 h-16 bg-secondary-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <Calendar className="w-8 h-8 text-secondary-400" />
+                                        </div>
+                                        <h3 className="text-xl font-bold text-secondary-700 mb-2">
+                                            {isExpired ? 'Bu düşərgə başa çatıb' : 'Qeydiyyat qapalıdır'}
+                                        </h3>
+                                        <p className="text-secondary-500 text-sm mb-4">
+                                            {isExpired
+                                                ? 'Bu düşərgənin tarixi keçib. Aktual düşərgələrimizə baxın.'
+                                                : 'Bu düşərgəyə qeydiyyat hazırda mövcud deyil.'}
+                                        </p>
+                                        <Link
+                                            href="/camps"
+                                            className="block w-full bg-primary-600 text-white text-center py-3 rounded-lg font-bold hover:bg-primary-700 transition-all"
+                                        >
+                                            Bütün düşərgələrə bax
+                                        </Link>
+                                    </div>
                                 </div>
                             )}
                             <div className="card p-6">
