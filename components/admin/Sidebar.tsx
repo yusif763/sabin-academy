@@ -11,7 +11,8 @@ import {
     Settings,
     LogOut,
     ChevronRight,
-    LucideActivity
+    LucideActivity,
+    Users
 } from 'lucide-react'
 
 const menuItems = [
@@ -20,6 +21,7 @@ const menuItems = [
     { label: 'Summer Camps', href: '/en/admin/camps', icon: Tent },
     { label: 'Activities', href: '/en/admin/activities', icon: LucideActivity },
     { label: 'Results', href: '/en/admin/results', icon: Trophy },
+    { label: 'Team', href: '/en/admin/team', icon: Users },
     { label: 'Contacts', href: '/en/admin/contacts', icon: Mail },
     { label: 'Settings', href: '/en/admin/settings', icon: Settings },
 ]
