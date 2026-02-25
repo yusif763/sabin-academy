@@ -101,6 +101,10 @@ export interface ResultFormData {
   order: number
 }
 
+// Result categories
+export const RESULT_CATEGORIES = ['IELTS', 'DIM9', 'DIM11', 'CAMBRIDGE'] as const
+export type ResultCategory = typeof RESULT_CATEGORIES[number]
+
 // Locale type
 export type Locale = 'en' | 'az' | 'ru'
 

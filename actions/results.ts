@@ -1,10 +1,7 @@
-''
+'use server'
 
 import { prisma } from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
-
-export const RESULT_CATEGORIES = ['IELTS', 'DIM9', 'DIM11', 'CAMBRIDGE'] as const
-export type ResultCategory = typeof RESULT_CATEGORIES[number]
 
 export async function getResults(category?: string) {
   try {
