@@ -131,7 +131,7 @@ export default function ResultCard({
                         zIndex: 1,
                     }} />
 
-                    {/* SA Logo – top right */}
+                    {/* Logo – top right */}
                     <div style={{
                         position: 'absolute', top: '12px', right: '12px',
                         width: '58px', height: '58px',
@@ -139,13 +139,14 @@ export default function ResultCard({
                         border: '3px solid #FF6B1A',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         zIndex: 10,
+                        background: 'white',
+                        padding: '6px',
                     }}>
-                        <svg viewBox="0 0 60 60" width="48" height="48" fill="none">
-                            <text x="10" y="32" fill="#FF6B1A" fontSize="22" fontWeight="900"
-                                  fontFamily="Arial Black, Arial" transform="rotate(-12,10,32)">S</text>
-                            <text x="28" y="50" fill="#FF6B1A" fontSize="22" fontWeight="900"
-                                  fontFamily="Arial Black, Arial" transform="rotate(-12,28,50)">A</text>
-                        </svg>
+                        <img
+                            src="/images/logo.png"
+                            alt="Sabina Academy Logo"
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        />
                     </div>
 
                     {/* Top Achiever badge */}

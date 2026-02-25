@@ -32,8 +32,12 @@ export default function Footer({ locale }: FooterProps) {
           {/* About Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
+              <div className="w-12 h-12">
+                <img
+                  src="/images/logo.png"
+                  alt="Sabina Academy Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-display text-xl font-bold">Sabina</span>

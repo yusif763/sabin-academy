@@ -1,14 +1,18 @@
+'use client'
+
 import Image from 'next/image'
-import { Handshake } from 'lucide-react'
+import { Handshake, MapPin } from 'lucide-react'
+import { useState } from 'react'
 
 const partners = [
-    { id: 1, name: 'Partner 1', logo: '/images/partners/1.jpeg' },
-    { id: 2, name: 'Partner 2', logo: '/images/partners/2.jpeg' },
-    { id: 3, name: 'Partner 3', logo: '/images/partners/3.jpeg' },
-    { id: 4, name: 'Partner 4', logo: '/images/partners/4.jpeg' },
+    { id: 1, name: 'Partner 1', logo: '/images/partners/1.jpeg', city: 'Bakı' },
+    { id: 2, name: 'Partner 2', logo: '/images/partners/2.jpeg', city: 'London' },
+    { id: 3, name: 'Partner 3', logo: '/images/partners/3.jpeg', city: 'New York' },
+    { id: 4, name: 'Partner 4', logo: '/images/partners/4.jpeg', city: 'Paris' },
 ]
 
 export default function PartnersSection() {
+    const [hoveredPartnerId, setHoveredPartnerId] = useState<number | null>(null)
     return (
         <section className="py-20 bg-gradient-to-b from-white to-secondary-50">
             <div className="container-custom">
@@ -31,9 +35,11 @@ export default function PartnersSection() {
                     {partners.map((partner) => (
                         <div
                             key={partner.id}
-                            className="group bg-white rounded-xl border-2 border-secondary-100 p-8 flex items-center justify-center transition-all duration-300 hover:border-primary-400 hover:shadow-xl"
+                            className="group bg-white rounded-xl border-2 border-secondary-100 p-8 flex flex-col items-center justify-center transition-all duration-300 hover:border-primary-400 hover:shadow-xl relative cursor-pointer"
+                            onMouseEnter={() => setHoveredPartnerId(partner.id)}
+                            onMouseLeave={() => setHoveredPartnerId(null)}
                         >
-                            <div className="relative w-full h-24">
+                            <div className="relative w-full h-24 mb-2">
                                 <Image
                                     src={partner.logo}
                                     alt={partner.name}
@@ -41,6 +47,17 @@ export default function PartnersSection() {
                                     className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
                                     unoptimized
                                 />
+                            </div>
+                            {/* City display on hover */}
+                            <div className={`flex items-center gap-1.5 transition-all duration-300 ${
+                                hoveredPartnerId === partner.id
+                                    ? 'opacity-100 translate-y-0'
+                                    : 'opacity-0 translate-y-2'
+                            }`}>
+                                <MapPin className="w-4 h-4 text-primary-600" />
+                                <span className="text-sm font-semibold text-secondary-700">
+                                    {partner.city}
+                                </span>
                             </div>
                         </div>
                     ))}

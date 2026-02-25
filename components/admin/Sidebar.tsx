@@ -44,8 +44,12 @@ export default function AdminSidebar() {
             {/* Logo */}
             <div className="p-6 border-b border-secondary-700">
                 <Link href="/en" className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                        S
+                    <div className="w-10 h-10">
+                        <img
+                            src="/images/logo.png"
+                            alt="Sabina Academy Logo"
+                            className="w-full h-full object-contain"
+                        />
                     </div>
                     <div>
                         <div className="font-bold text-lg">Sabina Academy</div>

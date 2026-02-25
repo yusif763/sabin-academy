@@ -22,6 +22,7 @@ export default function ResultEditForm({ result }: { result: any }) {
     const [formData, setFormData] = useState({
         image: result.image || '',
         category: result.category || 'IELTS',
+        note: result.note || '',
         active: result.active !== undefined ? result.active : true,
         order: result.order || 0
     })
@@ -117,6 +118,20 @@ export default function ResultEditForm({ result }: { result: any }) {
                                 </button>
                             ))}
                         </div>
+                    </div>
+
+                    {/* Note */}
+                    <div className="mb-4">
+                        <label className="block text-sm font-medium text-secondary-700 mb-2">
+                            Qeyd (İsteğe bağlı)
+                        </label>
+                        <textarea
+                            value={formData.note}
+                            onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+                            className="w-full px-4 py-2 border border-secondary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                            rows={3}
+                            placeholder="Tələbə haqqında qeyd və ya şərh"
+                        />
                     </div>
 
                     <div className="flex items-center space-x-6">

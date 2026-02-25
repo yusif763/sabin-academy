@@ -93,6 +93,7 @@ model Result {
   id          String   @id @default(cuid())
   image       String   // Result image
   category    String   @default("IELTS") // IELTS, DIM9, DIM11, CAMBRIDGE
+  note        String?  // Optional student note/comment
   active      Boolean  @default(true)
   order       Int      @default(0)
   createdAt   DateTime @default(now())

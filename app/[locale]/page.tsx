@@ -3,9 +3,11 @@ import { ArrowRight, Award, BookOpen, Globe, Users } from 'lucide-react'
 import { Link } from '@/routing'
 import Image from "next/image"
 import PartnersSection from '@/components/PartnersSection'
+import { getSetting } from '@/actions/settings'
 
 export default async function HomePage() {
   const t = await getTranslations()
+  const heroImage = await getSetting('hero_image') || 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800'
 
   const stats = [
     { icon: Users, label: t('home.stats.students'), value: '40K+' },
@@ -51,10 +53,11 @@ export default async function HomePage() {
               <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 opacity-10"></div>
                 <Image
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
+                  src={heroImage}
                   alt="Sabina Academy"
                   fill
                   className="w-full h-full object-cover"
+                  unoptimized
                 />
               </div>
               

@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { getTeamMembers } from '@/actions/team'
-import Image from 'next/image'
-import { Users, Mail, Linkedin } from 'lucide-react'
+import { Users } from 'lucide-react'
+import TeamGrid from '@/components/TeamGrid'
 
 export default async function TeamPage({ params }: { params: { locale: string } }) {
     const t = await getTranslations('team')
@@ -31,57 +31,7 @@ export default async function TeamPage({ params }: { params: { locale: string } 
             <section className="py-20">
                 <div className="container-custom">
                     {members.length > 0 ? (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                            {members.map((member: any) => {
-                                const trans = member.translations[0]
-                                return (
-                                    <div
-                                        key={member.id}
-                                        className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
-                                    >
-                                        {/* Photo */}
-                                        <div className="relative h-80 overflow-hidden bg-secondary-100">
-                                            <Image
-                                                src={member.image}
-                                                alt={member.name}
-                                                fill
-                                                className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                                unoptimized
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-secondary-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        </div>
-
-                                        {/* Content */}
-                                        <div className="p-6">
-                                            <h3 className="text-xl font-bold text-secondary-900 mb-1">
-                                                {member.name}
-                                            </h3>
-                                            <p className="text-primary-600 font-semibold mb-3">
-                                                {trans?.position}
-                                            </p>
-
-                                            {trans?.bio && (
-                                                <p className="text-sm text-secondary-600 mb-4 line-clamp-3">
-                                                    {trans.bio}
-                                                </p>
-                                            )}
-
-                                            {member.email && (
-                                                <div className="pt-4 border-t border-secondary-100">
-                                                    <a
-                                                        href={`mailto:${member.email}`}
-                                                        className="inline-flex items-center text-sm text-secondary-600 hover:text-primary-600 transition-colors"
-                                                    >
-                                                        <Mail className="w-4 h-4 mr-2" />
-                                                        {member.email}
-                                                    </a>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                        </div>
+                        <TeamGrid members={members} />
                     ) : (
                         <div className="text-center py-20">
                             <Users className="w-16 h-16 mx-auto mb-4 text-secondary-300" />
