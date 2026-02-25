@@ -23,6 +23,7 @@ interface Result {
     id: string
     image: string
     category: string
+    note?: string
     active: boolean
     order: number
     createdAt: string
@@ -94,6 +95,14 @@ export default function ResultsGallery({ results, noResultsTitle, noResultsDesc 
                                     {result.category === 'DIM9' ? 'DIM 9' : result.category === 'DIM11' ? 'DIM 11' : result.category}
                                 </span>
                             </div>
+                            {/* Note section at bottom */}
+                            {result.note && (
+                                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                    <p className="text-white text-sm leading-relaxed italic">
+                                        &ldquo;{result.note}&rdquo;
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

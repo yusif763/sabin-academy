@@ -44,8 +44,12 @@ export default function AdminLoginPage() {
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
                 {/* Logo */}
                 <div className="text-center mb-8">
-                    <div className="w-16 h-16 bg-primary-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        <span className="text-white font-bold text-2xl">S</span>
+                    <div className="w-16 h-16 mx-auto mb-4">
+                        <img
+                            src="/images/logo.png"
+                            alt="Sabina Academy Logo"
+                            className="w-full h-full object-contain"
+                        />
                     </div>
                     <h1 className="text-2xl font-bold text-secondary-900">Admin Login</h1>
                     <p className="text-secondary-600 mt-2">Sabina Academy</p>
