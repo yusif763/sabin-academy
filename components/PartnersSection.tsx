@@ -1,14 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { Handshake, MapPin } from 'lucide-react'
+import { Handshake, CalendarDays, MapPin } from 'lucide-react'
 import { useState } from 'react'
 
 const partners = [
-    { id: 1, name: 'Partner 1', logo: '/images/partners/1.jpeg', city: 'Bakı' },
-    { id: 2, name: 'Partner 2', logo: '/images/partners/2.jpeg', city: 'London' },
-    { id: 3, name: 'Partner 3', logo: '/images/partners/3.jpeg', city: 'New York' },
-    { id: 4, name: 'Partner 4', logo: '/images/partners/4.jpeg', city: 'Paris' },
+    { id: 1, name: 'IDP', logo: '/images/partners/1.jpeg', year: 2019, city: 'Bakı' },
+    { id: 2, name: 'Barratson', logo: '/images/partners/2.jpeg', year: 2017, city: 'London' },
+    { id: 3, name: 'Cambridge', logo: '/images/partners/3.jpeg', year: 2025, city: 'New York' },
+    { id: 4, name: 'Embassy', logo: '/images/partners/4.jpeg', year: 2015, city: 'Paris' },
 ]
 
 export default function PartnersSection() {
@@ -48,7 +48,7 @@ export default function PartnersSection() {
                                     unoptimized
                                 />
                             </div>
-                            {/* City display on hover */}
+                            {/* Year display on hover */}
                             <div className={`flex items-center gap-1.5 transition-all duration-300 ${
                                 hoveredPartnerId === partner.id
                                     ? 'opacity-100 translate-y-0'
@@ -57,6 +57,10 @@ export default function PartnersSection() {
                                 <MapPin className="w-4 h-4 text-primary-600" />
                                 <span className="text-sm font-semibold text-secondary-700">
                                     {partner.city}
+                                </span>
+                                <CalendarDays className="w-4 h-4 text-primary-600" />
+                                <span className="text-sm font-semibold text-secondary-700">
+                                     {partner.year}
                                 </span>
                             </div>
                         </div>
