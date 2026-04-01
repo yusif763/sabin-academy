@@ -201,7 +201,6 @@ export default function ResultCard({
                         </div>
                     )}
 
-                    {/* ── NAME — position absolute, TOP LEFT ── */}
                     <div style={{
                         position: 'absolute',
                         top: '80px',
