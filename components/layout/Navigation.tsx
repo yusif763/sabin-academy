@@ -82,6 +82,14 @@ export default function Navigation({ locale }: NavigationProps) {
 
           {/* Language Switcher & Mobile Menu */}
           <div className="flex items-center space-x-4">
+            {/* Qeydiyyat CTA */}
+            <Link
+              href="/register"
+              className="hidden md:inline-flex items-center px-5 py-2.5 rounded-lg bg-primary-500 text-white font-semibold shadow-lg hover:bg-primary-600 hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+            >
+              {t('register')}
+            </Link>
+
             {/* Language Dropdown */}
             <div className="relative">
               <button
@@ -147,6 +155,14 @@ export default function Navigation({ locale }: NavigationProps) {
                   {item.name}
                 </Link>
               ))}
+
+              <Link
+                href="/register"
+                onClick={() => setIsOpen(false)}
+                className="px-4 py-3 rounded-lg bg-primary-500 text-white font-semibold text-center shadow-lg"
+              >
+                {t('register')}
+              </Link>
             </div>
           </div>
         )}

@@ -7,7 +7,8 @@
     "results": "Nəticələr",
     "team": "Komandamız",
     "about": "Haqqımızda",
-    "contact": "Əlaqə"
+    "contact": "Əlaqə",
+    "register": "Qeydiyyat"
   },
   "home": {
     "hero": {
@@ -177,5 +178,58 @@
     "noActivities": "Hələ fəaliyyət yoxdur",
     "gallery": "Qalereya",
     "backToActivities": "Fəaliyyətlərə qayıt"
+  },
+  "register": {
+    "title": "Kursa İlkin Qeydiyyat",
+    "subtitle": "Formanı doldurun — komandamız qısa müddətdə sizinlə əlaqə saxlayacaq.",
+    "form": {
+      "firstName": "Ad",
+      "firstNamePlaceholder": "Nigar",
+      "lastName": "Soyad",
+      "lastNamePlaceholder": "Əliyeva",
+      "phone": "Telefon nömrəsi",
+      "course": "Kurs",
+      "coursePlaceholder": "Kurs seçin",
+      "courseOther": "Digər / siyahıda yoxdur",
+      "courseName": "Kursun adı",
+      "courseNamePlaceholder": "Məsələn: IELTS",
+      "optionalShow": "Əlavə məlumat (istəyə bağlı)",
+      "optionalHide": "Əlavə məlumatı gizlət",
+      "notSelected": "Seçilməyib",
+      "email": "E-poçt",
+      "birthDate": "Doğum tarixi",
+      "gender": "Cins",
+      "genderMale": "Kişi",
+      "genderFemale": "Qadın",
+      "genderOther": "Digər",
+      "gradeLevel": "Sinif",
+      "gradeLevelPlaceholder": "11-ci sinif",
+      "schoolName": "Məktəb",
+      "schoolNamePlaceholder": "132 saylı məktəb",
+      "district": "Rayon",
+      "districtPlaceholder": "Yasamal",
+      "targetScore": "Hədəf bal",
+      "experienceLevel": "Hazırkı səviyyə",
+      "experienceLevelPlaceholder": "Başlanğıc",
+      "preferredTime": "Üstünlük verilən vaxt",
+      "timeMorning": "Səhər",
+      "timeAfternoon": "Günorta",
+      "timeEvening": "Axşam",
+      "timeAny": "Fərqi yoxdur",
+      "preferredStartDate": "Başlamaq istədiyiniz tarix",
+      "note": "* ilə işarələnmiş sahələr məcburidir.",
+      "submit": "Müraciət et",
+      "submitting": "Göndərilir..."
+    },
+    "success": {
+      "title": "Müraciətiniz qəbul edildi",
+      "fallback": "Müraciətiniz qəbul edildi. Tezliklə sizinlə əlaqə saxlayacağıq.",
+      "again": "Yeni müraciət göndər"
+    },
+    "errors": {
+      "courseRequired": "Zəhmət olmasa kurs seçin və ya kursun adını yazın",
+      "rateLimit": "Bir qədər gözləyin və yenidən cəhd edin",
+      "generic": "Müraciət göndərilmədi, sonra yenidən cəhd edin"
+    }
   }
 }

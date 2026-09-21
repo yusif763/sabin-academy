@@ -3,6 +3,7 @@ import { ArrowRight, Award, BookOpen, Globe, Users } from 'lucide-react'
 import { Link } from '@/routing'
 import Image from "next/image"
 import PartnersSection from '@/components/PartnersSection'
+import PreRegistrationSection from '@/components/forms/PreRegistrationSection'
 import { getSetting } from '@/actions/settings'
 
 export default async function HomePage() {
@@ -76,6 +77,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      <PreRegistrationSection />
 
       <section className="py-20 bg-white">
         <div className="container-custom">

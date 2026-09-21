@@ -7,7 +7,8 @@
     "results": "Results",
     "team": "Our Team",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "register": "Register"
   },
   "home": {
     "hero": {
@@ -177,5 +178,58 @@
     "noActivities": "No activities yet",
     "gallery": "Gallery",
     "backToActivities": "Back to Activities"
+  },
+  "register": {
+    "title": "Course Pre-Registration",
+    "subtitle": "Fill in the form — our team will contact you shortly.",
+    "form": {
+      "firstName": "First name",
+      "firstNamePlaceholder": "Nigar",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Aliyeva",
+      "phone": "Phone number",
+      "course": "Course",
+      "coursePlaceholder": "Select a course",
+      "courseOther": "Other / not in the list",
+      "courseName": "Course name",
+      "courseNamePlaceholder": "For example: IELTS",
+      "optionalShow": "Additional details (optional)",
+      "optionalHide": "Hide additional details",
+      "notSelected": "Not selected",
+      "email": "Email",
+      "birthDate": "Date of birth",
+      "gender": "Gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "genderOther": "Other",
+      "gradeLevel": "Grade",
+      "gradeLevelPlaceholder": "11th grade",
+      "schoolName": "School",
+      "schoolNamePlaceholder": "School No. 132",
+      "district": "District",
+      "districtPlaceholder": "Yasamal",
+      "targetScore": "Target score",
+      "experienceLevel": "Current level",
+      "experienceLevelPlaceholder": "Beginner",
+      "preferredTime": "Preferred time",
+      "timeMorning": "Morning",
+      "timeAfternoon": "Afternoon",
+      "timeEvening": "Evening",
+      "timeAny": "Any",
+      "preferredStartDate": "Preferred start date",
+      "note": "Fields marked with * are required.",
+      "submit": "Send application",
+      "submitting": "Sending..."
+    },
+    "success": {
+      "title": "Your application has been received",
+      "fallback": "Your application has been received. We will contact you shortly.",
+      "again": "Send another application"
+    },
+    "errors": {
+      "courseRequired": "Please select a course or enter the course name",
+      "rateLimit": "Please wait a moment and try again",
+      "generic": "The application could not be sent, please try again later"
+    }
   }
 }

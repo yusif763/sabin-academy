@@ -7,7 +7,8 @@
     "results": "Результаты",
     "team": "Наша Команда",
     "about": "О нас",
-    "contact": "Контакты"
+    "contact": "Контакты",
+    "register": "Запись"
   },
   "home": {
     "hero": {
@@ -177,5 +178,58 @@
     "noActivities": "Занятий пока нет",
     "gallery": "Галерея",
     "backToActivities": "Назад к занятиям"
+  },
+  "register": {
+    "title": "Предварительная запись на курс",
+    "subtitle": "Заполните форму — наша команда свяжется с вами в ближайшее время.",
+    "form": {
+      "firstName": "Имя",
+      "firstNamePlaceholder": "Нигяр",
+      "lastName": "Фамилия",
+      "lastNamePlaceholder": "Алиева",
+      "phone": "Номер телефона",
+      "course": "Курс",
+      "coursePlaceholder": "Выберите курс",
+      "courseOther": "Другое / нет в списке",
+      "courseName": "Название курса",
+      "courseNamePlaceholder": "Например: IELTS",
+      "optionalShow": "Дополнительная информация (необязательно)",
+      "optionalHide": "Скрыть дополнительную информацию",
+      "notSelected": "Не выбрано",
+      "email": "Электронная почта",
+      "birthDate": "Дата рождения",
+      "gender": "Пол",
+      "genderMale": "Мужской",
+      "genderFemale": "Женский",
+      "genderOther": "Другой",
+      "gradeLevel": "Класс",
+      "gradeLevelPlaceholder": "11 класс",
+      "schoolName": "Школа",
+      "schoolNamePlaceholder": "Школа № 132",
+      "district": "Район",
+      "districtPlaceholder": "Ясамал",
+      "targetScore": "Целевой балл",
+      "experienceLevel": "Текущий уровень",
+      "experienceLevelPlaceholder": "Начальный",
+      "preferredTime": "Удобное время",
+      "timeMorning": "Утро",
+      "timeAfternoon": "День",
+      "timeEvening": "Вечер",
+      "timeAny": "Не важно",
+      "preferredStartDate": "Желаемая дата начала",
+      "note": "Поля, отмеченные *, обязательны.",
+      "submit": "Отправить заявку",
+      "submitting": "Отправка..."
+    },
+    "success": {
+      "title": "Ваша заявка принята",
+      "fallback": "Ваша заявка принята. Мы свяжемся с вами в ближайшее время.",
+      "again": "Отправить новую заявку"
+    },
+    "errors": {
+      "courseRequired": "Пожалуйста, выберите курс или укажите его название",
+      "rateLimit": "Подождите немного и попробуйте снова",
+      "generic": "Заявку не удалось отправить, попробуйте позже"
+    }
   }
 }
