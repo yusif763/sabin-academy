@@ -219,7 +219,27 @@
       "preferredStartDate": "Başlamaq istədiyiniz tarix",
       "note": "* ilə işarələnmiş sahələr məcburidir.",
       "submit": "Müraciət et",
-      "submitting": "Göndərilir..."
+      "submitting": "Göndərilir...",
+      "program": "Proqram",
+      "programPlaceholder": "Proqram seçin",
+      "deliveryMode": "Format",
+      "modeOffline": "Offline",
+      "modeOnline": "Online",
+      "modeIndividual": "Fərdi",
+      "modeSpeaking": "Danışıq",
+      "sector": "Sektor",
+      "sectorAz": "Azərbaycan",
+      "sectorRu": "Rus",
+      "sectorEn": "İngilis",
+      "preferredDays": "Uyğun günlər",
+      "dayMon": "B.e",
+      "dayTue": "Ç.a",
+      "dayWed": "Ç",
+      "dayThu": "C.a",
+      "dayFri": "C",
+      "daySat": "Ş",
+      "daySun": "B",
+      "preferredStartMonth": "Başlamaq istədiyiniz ay"
     },
     "success": {
       "title": "Müraciətiniz qəbul edildi",
@@ -230,6 +250,20 @@
       "courseRequired": "Zəhmət olmasa kurs seçin və ya kursun adını yazın",
       "rateLimit": "Bir qədər gözləyin və yenidən cəhd edin",
       "generic": "Müraciət göndərilmədi, sonra yenidən cəhd edin"
+    },
+    "closed": {
+      "title": "Qeydiyyat müvəqqəti bağlıdır",
+      "body": "Hazırda yeni müraciət qəbul etmirik. Yeni qrupların elanı üçün bizi izləyin və ya birbaşa əlaqə saxlayın."
+    }
+  },
+  "services": {
+    "title": "Xidmətlərimiz",
+    "subtitle": "Akademiyada tədris olunan proqramlar",
+    "groups": {
+      "YOUNG_LEARNERS": "Young Learners",
+      "GENERAL_ENGLISH": "General English",
+      "PREP": "Hazırlıq",
+      "SCHOOL": "Məktəb proqramı"
     }
   }
 }

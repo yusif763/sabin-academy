@@ -16,6 +16,8 @@ export interface PublicCourse {
 
 export type PreRegistrationGender = 'MALE' | 'FEMALE' | 'OTHER'
 export type PreRegistrationPreferredTime = 'MORNING' | 'AFTERNOON' | 'EVENING' | 'ANY'
+export type PreRegistrationDeliveryMode = 'OFFLINE' | 'ONLINE' | 'INDIVIDUAL' | 'SPEAKING'
+export type PreRegistrationSector = 'AZ' | 'RU' | 'EN'
 
 export interface PreRegistrationInput {
   firstName: string
@@ -33,6 +35,10 @@ export interface PreRegistrationInput {
   experienceLevel?: string
   preferredTime?: PreRegistrationPreferredTime | ''
   preferredStartDate?: string
+  deliveryMode?: PreRegistrationDeliveryMode | ''
+  sector?: PreRegistrationSector | ''
+  programCode?: string
+  preferredDays?: string[]
 }
 
 /** VALIDATION → API-nin mətnini göstər, qalanları tərcümə olunmuş mesajla əvəz olunur. */
@@ -94,16 +100,41 @@ export async function fetchPublicCourses(): Promise<PublicCourse[]> {
 }
 
 /** Boş sahələri göndərmirik — API null qəbul etmir, naməlum sahələri isə səssizcə atır. */
-function buildPayload(input: PreRegistrationInput): Record<string, string> {
-  const payload: Record<string, string> = {}
+function buildPayload(input: PreRegistrationInput): Record<string, string | string[]> {
+  const payload: Record<string, string | string[]> = {}
 
   for (const [key, value] of Object.entries(input)) {
     if (typeof value === 'string' && value.trim() !== '') {
       payload[key] = value.trim()
+    } else if (Array.isArray(value) && value.length > 0) {
+      payload[key] = value
     }
   }
 
   return payload
+}
+
+/**
+ * Qeydiyyatın açıq olub-olmaması. API əlçatmazdırsa açıq sayılır —
+ * şəbəkə problemi səbəbindən formu gizlətmək real müraciətləri itirər.
+ */
+export async function fetchPreRegistrationOpen(): Promise<boolean> {
+  if (!API_KEY) return true
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/public/settings`, {
+      headers: apiHeaders(),
+      next: { revalidate: 60 },
+    })
+    if (!response.ok) return true
+
+    const body = await response.json()
+    const open = body?.data?.preRegistrationOpen
+    return typeof open === 'boolean' ? open : true
+  } catch (error) {
+    console.error('[sabina-api] GET /public/settings xətası:', error)
+    return true
+  }
 }
 
 export async function sendPreRegistration(input: PreRegistrationInput): Promise<PreRegistrationResult> {

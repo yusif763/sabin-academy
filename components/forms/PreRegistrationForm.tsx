@@ -5,11 +5,14 @@ import { useTranslations } from 'next-intl'
 import { CheckCircle, ChevronDown, Send } from 'lucide-react'
 import { submitPreRegistration } from '@/actions/pre-registration'
 import type {
+  PreRegistrationDeliveryMode,
   PreRegistrationGender,
   PreRegistrationInput,
   PreRegistrationPreferredTime,
+  PreRegistrationSector,
   PublicCourse,
 } from '@/lib/sabina-api'
+import { PROGRAM_GROUPS } from '@/lib/catalog'
 
 const OTHER_COURSE = '__OTHER__'
 
@@ -21,7 +24,8 @@ const EMPTY_FORM: Required<Pick<
   PreRegistrationInput,
   'firstName' | 'lastName' | 'phone' | 'courseId' | 'courseName' | 'email' |
   'birthDate' | 'gender' | 'gradeLevel' | 'schoolName' | 'district' |
-  'targetScore' | 'experienceLevel' | 'preferredTime' | 'preferredStartDate'
+  'targetScore' | 'experienceLevel' | 'preferredTime' | 'preferredStartDate' |
+  'programCode' | 'deliveryMode' | 'sector'
 >> = {
   firstName: '',
   lastName: '',
@@ -38,6 +42,9 @@ const EMPTY_FORM: Required<Pick<
   experienceLevel: '',
   preferredTime: '',
   preferredStartDate: '',
+  programCode: '',
+  deliveryMode: '',
+  sector: '',
 }
 
 export default function PreRegistrationForm({ courses }: PreRegistrationFormProps) {
@@ -49,6 +56,8 @@ export default function PreRegistrationForm({ courses }: PreRegistrationFormProp
   const [formData, setFormData] = useState(EMPTY_FORM)
   const [courseChoice, setCourseChoice] = useState(hasCourseList ? '' : OTHER_COURSE)
   const [showOptional, setShowOptional] = useState(false)
+  // Massiv olduğu üçün `update` helper-inə uyğun gəlmir, ayrıca saxlanılır.
+  const [days, setDays] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -66,6 +75,15 @@ export default function PreRegistrationForm({ courses }: PreRegistrationFormProp
 
   const updatePreferredTime = (value: string) =>
     setFormData((prev) => ({ ...prev, preferredTime: value as PreRegistrationPreferredTime | '' }))
+
+  const updateDeliveryMode = (value: string) =>
+    setFormData((prev) => ({ ...prev, deliveryMode: value as PreRegistrationDeliveryMode | '' }))
+
+  const updateSector = (value: string) =>
+    setFormData((prev) => ({ ...prev, sector: value as PreRegistrationSector | '' }))
+
+  const toggleDay = (day: string) =>
+    setDays((prev) => (prev.includes(day) ? prev.filter((d) => d !== day) : [...prev, day]))
 
   const handleCourseChange = (value: string) => {
     setCourseChoice(value)
@@ -91,11 +109,12 @@ export default function PreRegistrationForm({ courses }: PreRegistrationFormProp
     setSuccess('')
 
     try {
-      const result = await submitPreRegistration(formData)
+      const result = await submitPreRegistration({ ...formData, preferredDays: days })
 
       if (result.ok) {
         setSuccess(result.message || t('success.fallback'))
         setFormData(EMPTY_FORM)
+        setDays([])
         setCourseChoice(hasCourseList ? '' : OTHER_COURSE)
         setShowOptional(false)
         return
@@ -231,6 +250,81 @@ export default function PreRegistrationForm({ courses }: PreRegistrationFormProp
         )}
       </div>
 
+
+      <div className="mt-5 grid md:grid-cols-2 gap-5">
+        <div>
+          <label className={labelClass}>{t('form.program')}</label>
+          <select
+            value={formData.programCode}
+            onChange={(e) => update('programCode', e.target.value)}
+            className={inputClass}
+          >
+            <option value="">{t('form.programPlaceholder')}</option>
+            {PROGRAM_GROUPS.map((group) => (
+              <optgroup key={group.key} label={group.label}>
+                {group.items.map((item) => (
+                  <option key={item.code} value={item.code}>{item.label}</option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className={labelClass}>{t('form.deliveryMode')}</label>
+          <select
+            value={formData.deliveryMode}
+            onChange={(e) => updateDeliveryMode(e.target.value)}
+            className={inputClass}
+          >
+            <option value="">{t('form.notSelected')}</option>
+            <option value="OFFLINE">{t('form.modeOffline')}</option>
+            <option value="ONLINE">{t('form.modeOnline')}</option>
+            <option value="INDIVIDUAL">{t('form.modeIndividual')}</option>
+            <option value="SPEAKING">{t('form.modeSpeaking')}</option>
+          </select>
+        </div>
+
+        <div>
+          <label className={labelClass}>{t('form.sector')}</label>
+          <select
+            value={formData.sector}
+            onChange={(e) => updateSector(e.target.value)}
+            className={inputClass}
+          >
+            <option value="">{t('form.notSelected')}</option>
+            <option value="AZ">{t('form.sectorAz')}</option>
+            <option value="RU">{t('form.sectorRu')}</option>
+            <option value="EN">{t('form.sectorEn')}</option>
+          </select>
+        </div>
+
+        <div className="md:col-span-2">
+          <label className={labelClass}>{t('form.preferredDays')}</label>
+          <div className="flex flex-wrap gap-2">
+            {([
+              ['MON', t('form.dayMon')], ['TUE', t('form.dayTue')], ['WED', t('form.dayWed')],
+              ['THU', t('form.dayThu')], ['FRI', t('form.dayFri')], ['SAT', t('form.daySat')],
+              ['SUN', t('form.daySun')],
+            ] as const).map(([code, label]) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => toggleDay(code)}
+                aria-pressed={days.includes(code)}
+                className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
+                  days.includes(code)
+                    ? 'border-primary-500 bg-primary-50 text-primary-700'
+                    : 'border-secondary-300 text-secondary-600 hover:bg-secondary-50'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <button
         type="button"
         onClick={() => setShowOptional(!showOptional)}
@@ -354,11 +448,13 @@ export default function PreRegistrationForm({ courses }: PreRegistrationFormProp
           </div>
 
           <div>
-            <label className={labelClass}>{t('form.preferredStartDate')}</label>
+            <label className={labelClass}>{t('form.preferredStartMonth')}</label>
             <input
-              type="date"
-              value={formData.preferredStartDate}
-              onChange={(e) => update('preferredStartDate', e.target.value)}
+              type="month"
+              value={formData.preferredStartDate.slice(0, 7)}
+              onChange={(e) =>
+                update('preferredStartDate', e.target.value ? `${e.target.value}-01` : '')
+              }
               className={inputClass}
             />
           </div>

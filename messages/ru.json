@@ -219,7 +219,27 @@
       "preferredStartDate": "Желаемая дата начала",
       "note": "Поля, отмеченные *, обязательны.",
       "submit": "Отправить заявку",
-      "submitting": "Отправка..."
+      "submitting": "Отправка...",
+      "program": "Программа",
+      "programPlaceholder": "Выберите программу",
+      "deliveryMode": "Формат",
+      "modeOffline": "Оффлайн",
+      "modeOnline": "Онлайн",
+      "modeIndividual": "Индивидуально",
+      "modeSpeaking": "Разговорный",
+      "sector": "Сектор",
+      "sectorAz": "Азербайджанский",
+      "sectorRu": "Русский",
+      "sectorEn": "Английский",
+      "preferredDays": "Удобные дни",
+      "dayMon": "Пн",
+      "dayTue": "Вт",
+      "dayWed": "Ср",
+      "dayThu": "Чт",
+      "dayFri": "Пт",
+      "daySat": "Сб",
+      "daySun": "Вс",
+      "preferredStartMonth": "Желаемый месяц начала"
     },
     "success": {
       "title": "Ваша заявка принята",
@@ -230,6 +250,20 @@
       "courseRequired": "Пожалуйста, выберите курс или укажите его название",
       "rateLimit": "Подождите немного и попробуйте снова",
       "generic": "Заявку не удалось отправить, попробуйте позже"
+    },
+    "closed": {
+      "title": "Регистрация временно закрыта",
+      "body": "Сейчас мы не принимаем новые заявки. Следите за объявлениями о новых группах или свяжитесь с нами напрямую."
+    }
+  },
+  "services": {
+    "title": "Наши услуги",
+    "subtitle": "Программы, преподаваемые в академии",
+    "groups": {
+      "YOUNG_LEARNERS": "Young Learners",
+      "GENERAL_ENGLISH": "General English",
+      "PREP": "Подготовка к экзаменам",
+      "SCHOOL": "Школьная программа"
     }
   }
 }

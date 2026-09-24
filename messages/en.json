@@ -219,7 +219,27 @@
       "preferredStartDate": "Preferred start date",
       "note": "Fields marked with * are required.",
       "submit": "Send application",
-      "submitting": "Sending..."
+      "submitting": "Sending...",
+      "program": "Programme",
+      "programPlaceholder": "Select a programme",
+      "deliveryMode": "Format",
+      "modeOffline": "Offline",
+      "modeOnline": "Online",
+      "modeIndividual": "One-to-one",
+      "modeSpeaking": "Speaking",
+      "sector": "Sector",
+      "sectorAz": "Azerbaijani",
+      "sectorRu": "Russian",
+      "sectorEn": "English",
+      "preferredDays": "Preferred days",
+      "dayMon": "Mon",
+      "dayTue": "Tue",
+      "dayWed": "Wed",
+      "dayThu": "Thu",
+      "dayFri": "Fri",
+      "daySat": "Sat",
+      "daySun": "Sun",
+      "preferredStartMonth": "Preferred start month"
     },
     "success": {
       "title": "Your application has been received",
@@ -230,6 +250,20 @@
       "courseRequired": "Please select a course or enter the course name",
       "rateLimit": "Please wait a moment and try again",
       "generic": "The application could not be sent, please try again later"
+    },
+    "closed": {
+      "title": "Registration is temporarily closed",
+      "body": "We are not accepting new applications right now. Follow us for new group announcements or contact us directly."
+    }
+  },
+  "services": {
+    "title": "Our services",
+    "subtitle": "Programmes taught at the academy",
+    "groups": {
+      "YOUNG_LEARNERS": "Young Learners",
+      "GENERAL_ENGLISH": "General English",
+      "PREP": "Exam preparation",
+      "SCHOOL": "School programme"
     }
   }
 }

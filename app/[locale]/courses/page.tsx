@@ -3,6 +3,7 @@ import { getCourses } from '@/actions/courses'
 import { Link } from '@/routing'
 import { BookOpen, Clock, Users, CheckCircle, Award, TrendingUp, Star } from 'lucide-react'
 import Image from "next/image";
+import ServicesSection from '@/components/sections/ServicesSection'
 
 export default async function CoursesPage({ params }: { params: { locale: string } }) {
   const t = await getTranslations('courses')
@@ -184,6 +185,8 @@ export default async function CoursesPage({ params }: { params: { locale: string
           )}
         </div>
       </section>
+
+      <ServicesSection />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-500 text-white">

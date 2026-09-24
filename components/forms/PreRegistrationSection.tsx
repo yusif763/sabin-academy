@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server'
-import { fetchPublicCourses } from '@/lib/sabina-api'
+import { fetchPreRegistrationOpen, fetchPublicCourses } from '@/lib/sabina-api'
 import PreRegistrationForm from './PreRegistrationForm'
 
 interface PreRegistrationSectionProps {
@@ -11,12 +11,26 @@ export default async function PreRegistrationSection({
   variant = 'section',
 }: PreRegistrationSectionProps) {
   const t = await getTranslations('register')
-  const courses = await fetchPublicCourses()
+  const [courses, isOpen] = await Promise.all([
+    fetchPublicCourses(),
+    fetchPreRegistrationOpen(),
+  ])
+
+  // Paneldən bağlananda form ümumiyyətlə render olunmur; server də
+  // müraciəti rədd edir, ona görə bu yalnız izahlı mesajdır.
+  const body = isOpen ? (
+    <PreRegistrationForm courses={courses} />
+  ) : (
+    <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 text-center">
+      <h3 className="text-2xl font-bold text-secondary-900 mb-3">{t('closed.title')}</h3>
+      <p className="text-secondary-600">{t('closed.body')}</p>
+    </div>
+  )
 
   if (variant === 'plain') {
     return (
       <div className="max-w-4xl mx-auto">
-        <PreRegistrationForm courses={courses} />
+        {body}
       </div>
     )
   }
@@ -30,7 +44,7 @@ export default async function PreRegistrationSection({
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <PreRegistrationForm courses={courses} />
+          {body}
         </div>
       </div>
     </section>
